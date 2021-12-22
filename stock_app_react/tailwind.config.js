@@ -11,6 +11,7 @@ module.exports = {
         "text-white": "#F9F3F3",
         "text-black-light": "#3F3F3F",
         "text-gray": "#6A6565",
+        "custom-gray": "rgba(0, 0, 0, 0.5)",
       }
     },
   },

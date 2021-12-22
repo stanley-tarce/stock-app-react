@@ -2,18 +2,23 @@ import React, { useState, createContext } from 'react'
 export const CreateContext = createContext()
 export default function DataHooks({ children }) {
   const [headers, setHeaders] = useState({
-    'access-token': 'st-token',
+    'access-token': '',
     'client': '',
     'uid': '',
     'expiry': ''
   })
-  const [active, setActive] = useState({ email: false, password: false })
+  const [loginEmailState, setLoginEmailState] = useState(false)
+  const [loginPasswordState, setLoginPasswordState] = useState(false)
+
   let context =
   {
     headers,
     setHeaders,
-    active,
-    setActive
+    loginEmailState,
+    setLoginEmailState,
+    loginPasswordState,
+    setLoginPasswordState,
+
   }
   return (
     <CreateContext.Provider value={context}>

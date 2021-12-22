@@ -7,19 +7,46 @@ import LabelInputs from '../Components/LabelInput'
 export default function SignIn() {
   const emailRef = useRef()
   const passwordRef = useRef()
-  const { active, setActive } = useContext(CreateContext)
+  const {
+    loginEmailState,
+    setLoginEmailState,
+    loginPasswordState,
+    setLoginPasswordState,
+  } = useContext(CreateContext)
   const inputs = [
-    { svg: <EmailSVG />, type: 'email', state: active, setState: setActive, ref: emailRef },
-    { svg: <PasswordSVG />, type: 'password', state: active, setState: setActive, ref: passwordRef }
+    {
+      svg: <EmailSVG />,
+      label: 'email',
+      type: 'email',
+      state: loginEmailState,
+      setState: setLoginEmailState,
+      ref: emailRef
+    },
+    {
+      svg: <PasswordSVG />,
+      label: 'password',
+      type: 'password',
+      state: loginPasswordState,
+      setState: setLoginPasswordState,
+      ref: passwordRef,
+      children: <div className='w-auto h-auto'><p className='text-[11px] text-primary-blue-light font-bold mr-1'>FORGOT</p></div>
+    },
+
+
+
+
   ]
   return (
-    <div className="w-screen h-screen bg-primary-blue-light flex flex-col items-center justify-center">
+    <div className="w-screen h-screen bg-primary-blue-light flex flex-col items-center justify-center gap-[40px]">
       <LogoSVG />
-      <form className="w-[80%] h-auto flex flex-col justify-center items-center gap-[10px]" onSubmit={() => console.log('hello')}>
-        {inputs.map(({ svg, type, state, setState, ref }) => {
-          return <LabelInputs svg={svg} type={type} state={state} setState={setState} ref={ref} />
+      <form className="w-[80%] h-auto flex flex-col justify-center items-center gap-[25px]" onSubmit={() => console.log('hello')}>
+        {inputs.map(({ children, svg, type, state, setState, ref, label }) => {
+          return <LabelInputs svg={svg} type={type} state={state} setState={setState} ref={ref} label={label}>{children} </LabelInputs>
         })}
-      </form>
-    </div>
+        <div className='w-[200px] h-[40px] rounded-[20px] bg-primary-green flex justify-center items-center gap-[15px]'><p className='text-[16px] font-bold text-primary-black'>LOGIN</p>
+          {/**Miyu, lagay mo dito yung fontawesome */}</div>
+      </form >
+      <p className='text-[16px] text-white'>Don't have an account? <a className="text-primary-green no-underline cursor-pointer">Sign Up</a></p>
+    </div >
   )
 }
