@@ -10,6 +10,10 @@ export default function DataHooks({ children }) {
   const [loginEmailState, setLoginEmailState] = useState(false)
   const [loginPasswordState, setLoginPasswordState] = useState(false)
 
+  const [signUpEmailState, setSignUpEmailState] = useState(false)
+  const [signUpPasswordState, setSignUpPasswordState] = useState(false)
+  const [signUpConfirmPasswordState, setConfirmSignUpPasswordState] =useState(false)
+
   let context =
   {
     headers,
@@ -19,6 +23,12 @@ export default function DataHooks({ children }) {
     loginPasswordState,
     setLoginPasswordState,
 
+    signUpEmailState,
+    setSignUpEmailState,
+    signUpPasswordState,
+    setSignUpPasswordState,
+    signUpConfirmPasswordState,
+    setConfirmSignUpPasswordState
   }
   return (
     <CreateContext.Provider value={context}>

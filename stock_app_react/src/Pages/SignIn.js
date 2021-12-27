@@ -1,4 +1,5 @@
 import React, { useRef, useContext } from 'react'
+import { Link } from 'react-router-dom'
 import { CreateContext } from '../Data/DataHooks'
 import LogoSVG from '../Assets/logosvg'
 import EmailSVG from '../Assets/emailsvg'
@@ -46,7 +47,7 @@ export default function SignIn() {
         <div className='w-[200px] h-[40px] rounded-[20px] bg-primary-green flex justify-center items-center gap-[15px]'><p className='text-[16px] font-bold text-primary-black'>LOGIN</p>
           {/**Miyu, lagay mo dito yung fontawesome */}</div>
       </form >
-      <p className='text-[16px] text-white'>Don't have an account? <a className="text-primary-green no-underline cursor-pointer">Sign Up</a></p>
+      <p className='text-[16px] text-white'>Don't have an account? <Link to="/Signup" className="text-primary-green no-underline cursor-pointer">Sign Up</Link></p>
     </div >
   )
 }
