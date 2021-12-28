@@ -35,7 +35,6 @@ function Signup() {
             state: signUpPasswordState,
             setState: setSignUpPasswordState,
             ref: passwordRef,
-            children: <div className='w-auto h-auto'><p className='text-[11px] text-primary-blue-light font-bold mr-1'>FORGOT</p></div>
         },
 
         {
@@ -45,7 +44,6 @@ function Signup() {
             state: signUpConfirmPasswordState,
             setState: setConfirmSignUpPasswordState,
             ref: confirmPasswordRef,
-            children: <div className='w-auto h-auto'><p className='text-[11px] text-primary-blue-light font-bold mr-1'>FORGOT</p></div>
         },
       
     ]
