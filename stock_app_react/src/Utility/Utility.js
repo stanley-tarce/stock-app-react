@@ -25,16 +25,16 @@ export const userSignIn = (email, password) => {
 
     axios(config)
     .then((response) => {
-        setLoginEmailState(true)
-        setLoginPasswordState(true)
+        // setLoginEmailState(true)
+        // setLoginPasswordState(true)
         console.log('here')
 
-        setHeaders({
-            'access-token': response.headers['access-token'],
-            'client': response.headers.client,
-            'expiry': response.headers.expiry,
-            'uid': response.headers.uid
-        })
+        // setHeaders({
+        //     'access-token': response.headers['access-token'],
+        //     'client': response.headers.client,
+        //     'expiry': response.headers.expiry,
+        //     'uid': response.headers.uid
+        // })
     })
     // .catch()
 
