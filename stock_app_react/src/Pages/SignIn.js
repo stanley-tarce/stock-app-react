@@ -1,13 +1,13 @@
 import React, { useRef, useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { CreateContext } from '../Data/DataHooks'
 import LogoSVG from '../Assets/logosvg'
 import EmailSVG from '../Assets/emailsvg'
 import PasswordSVG from '../Assets/passwordsvg'
 import LabelInputs from '../Components/LabelInput'
 import { apiCall } from '../Utility/Utility'
-import axios from 'axios'
 export default function SignIn() {
+  const navigate = useNavigate()
   const emailRef = useRef()
   const passwordRef = useRef()
   const {
@@ -51,6 +51,7 @@ export default function SignIn() {
         setHeaders({ 'access-token': response.data['access-token'], 'client': response.data['client'], 'uid': response.data['uid'], 'expiry': response.data['expiry'] })
         console.log('New Headers are now stored')
         console.log(`Current User Type: ${response.data.data['user_type']}`)
+        response.data.data.user_type === 'trader' ? navigate('/main') : console.log('admin')
         // Use response.data.data
       })
       .catch(error => console.log(error.response))

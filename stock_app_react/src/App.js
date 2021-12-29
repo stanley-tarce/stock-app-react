@@ -2,13 +2,15 @@ import { useRoutes } from 'react-router-dom';
 import SignIn from './Pages/SignIn';
 import DataHooks from './Data/DataHooks';
 import Signup from './Pages/Signup';
+import MainDashboard from './Pages/MainDashboard';
 
 
 
 function App() {
   const routes = useRoutes([
-    { path: '/', element: <SignIn /> },
-    { path: '/signup', element: <Signup /> }
+    { path: '/', element: <SignIn />, exact: true },
+    { path: '/signup', element: <Signup />, exact: true },
+    { path: '/main', element: <MainDashboard /> }
   ])
   return (
     <DataHooks>
