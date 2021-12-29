@@ -16,6 +16,10 @@ export default function SignIn() {
     setLoginEmailState,
     loginPasswordState,
     setLoginPasswordState,
+    setHeaders,
+    setUserData,
+    setTraderData,
+    setAdminData,
   } = useContext(CreateContext)
 
   const inputs = [
@@ -46,32 +50,32 @@ export default function SignIn() {
       email: emailRef.current.value,
       password: passwordRef.current.value
     }
-    apiCall('signin', null, data)
+    let object = { data: data }
+    apiCall('signin', object)
       .then(response => {
-        setHeaders({ 'access-token': response.data['access-token'], 'client': response.data['client'], 'uid': response.data['uid'], 'expiry': response.data['expiry'] })
-        console.log('New Headers are now stored')
-        console.log(`Current User Type: ${response.data.data['user_type']}`)
-        response.data.data.user_type === 'trader' ? navigate('/main') : console.log('admin')
-        // Use response.data.data
+        setHeaders({ 'access-token': response.headers['access-token'], 'client': response.headers['client'], 'uid': response.headers['uid'], 'expiry': response.headers['expiry'] })
+        setUserData({ id: response.data.data.id, email: response.data.data.email, user_type: response.data.data.user_type, name: response.data.data.name })
+        if (response.data.data.user_type === 'trader') {
+          setTraderData({ ...response.data.data.trader })
+          navigate('/main')
+        }
+        else
+          setAdminData({ ...response.data.data.admin })
+        // navigate to other dashboard(admin dashboard)
       })
       .catch(error => console.log(error.response))
   }
-
-  userSignIn(email, password)
-}
-
-
-return (
-  <div className="w-screen h-screen bg-primary-blue-light flex flex-col items-center justify-center gap-[40px]">
-    <LogoSVG />
-    <form className="w-[80%] h-auto flex flex-col justify-center items-center gap-[25px]" onSubmit={(e) => handleSubmit(e)}>
-      {inputs.map(({ children, svg, type, state, setState, ref, label }) => {
-        return <LabelInputs svg={svg} type={type} state={state} setState={setState} ref={ref} label={label}>{children} </LabelInputs>
-      })}
-      <button className='w-[200px] h-[40px] rounded-[20px] bg-primary-green flex justify-center items-center gap-[15px]'><div className='text-[16px] font-bold text-primary-black'>LOGIN</div>
-        { }</button>
-    </form >
-    <p className='text-[16px] text-white'>Don't have an account? <Link to="/Signup" className="text-primary-green no-underline cursor-pointer">Sign Up</Link></p>
-  </div >
-)
+  return (
+    <div className="w-screen h-screen bg-primary-blue-light flex flex-col items-center justify-center gap-[40px]">
+      <LogoSVG />
+      <form className="w-[80%] h-auto flex flex-col justify-center items-center gap-[25px]" onSubmit={(e) => handleSubmit(e)}>
+        {inputs.map(({ children, svg, type, state, setState, ref, label }) => {
+          return <LabelInputs svg={svg} type={type} state={state} setState={setState} ref={ref} label={label}>{children} </LabelInputs>
+        })}
+        <button className='w-[200px] h-[40px] rounded-[20px] bg-primary-green flex justify-center items-center gap-[15px]'><div className='text-[16px] font-bold text-primary-black'>LOGIN</div>
+          { }</button>
+      </form >
+      <p className='text-[16px] text-white'>Don't have an account? <Link to="/Signup" className="text-primary-green no-underline cursor-pointer">Sign Up</Link></p>
+    </div >
+  )
 }

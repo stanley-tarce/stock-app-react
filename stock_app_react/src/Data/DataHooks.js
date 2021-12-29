@@ -7,12 +7,15 @@ export default function DataHooks({ children }) {
     'uid': '',
     'expiry': ''
   })
+  const [userData, setUserData] = useState({})
+  const [traderData, setTraderData] = useState({})
+  const [adminData, setAdminData] = useState({})
   const [loginEmailState, setLoginEmailState] = useState(false)
   const [loginPasswordState, setLoginPasswordState] = useState(false)
 
   const [signUpEmailState, setSignUpEmailState] = useState(false)
   const [signUpPasswordState, setSignUpPasswordState] = useState(false)
-  const [signUpConfirmPasswordState, setConfirmSignUpPasswordState] =useState(false)
+  const [signUpConfirmPasswordState, setConfirmSignUpPasswordState] = useState(false)
 
   let context =
   {
@@ -28,7 +31,13 @@ export default function DataHooks({ children }) {
     signUpPasswordState,
     setSignUpPasswordState,
     signUpConfirmPasswordState,
-    setConfirmSignUpPasswordState
+    setConfirmSignUpPasswordState,
+    userData,
+    setUserData,
+    traderData,
+    setTraderData,
+    adminData,
+    setAdminData
   }
   return (
     <CreateContext.Provider value={context}>
