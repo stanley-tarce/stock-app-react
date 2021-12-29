@@ -5,6 +5,7 @@ import EmailSVG from '../Assets/emailsvg'
 import PasswordSVG from '../Assets/passwordsvg'
 import LabelInputs from '../Components/LabelInput'
 import { useForm } from 'react-hook-form'
+import { apiCall } from '../Utility/Utility'
 
 function Signup() {
     // const emailRef = useRef()
@@ -51,7 +52,21 @@ function Signup() {
       
     ]
 
-    const onSubmit = (data) => console.log({data})
+    const onSubmit = (data) => {
+        let object = { data: data }
+        apiCall('signup', object)
+            .then(response => {
+                setHeaders({ 'access-token': response.headers['access-token'], 'client': response.headers['client'], 'uid': response.headers['uid'], 'expiry': response.headers['expiry'] })
+                setUserData({ id: response.data.data.id, email: response.data.data.email, user_type: response.data.data.user_type, name: response.data.data.name })
+                if (response.data.data.user_type === 'trader') {
+                    setTraderData({ ...response.data.data.trader })
+                    //WAIT FOR CONFIRMATION OF YOUR ACCOUNT MODAL
+                }
+
+            })
+            .catch(error => console.log(error.response))
+
+    }
 
     return (
         <div  className="w-screen h-screen bg-primary-blue-light flex flex-col items-center justify-center gap-[40px]">
