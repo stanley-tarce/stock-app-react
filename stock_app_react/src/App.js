@@ -8,7 +8,7 @@ import Signup from './Pages/Signup';
 function App() {
   const routes = useRoutes([
     { path: '/', element: <SignIn /> },
-    { path: '/Signup', element: <Signup />}
+    { path: '/signup', element: <Signup /> }
   ])
   return (
     <DataHooks>
