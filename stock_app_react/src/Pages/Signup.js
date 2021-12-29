@@ -4,13 +4,14 @@ import LogoSVG from '../Assets/logosvg'
 import EmailSVG from '../Assets/emailsvg'
 import PasswordSVG from '../Assets/passwordsvg'
 import LabelInputs from '../Components/LabelInput'
-import { apiCall } from '../Utility/Utility'
+import { useForm } from 'react-hook-form'
 
 function Signup() {
-    const emailRef = useRef()
-    const passwordRef = useRef()
-    const confirmPasswordRef = useRef()
-    const nameRef = useRef()
+    // const emailRef = useRef()
+    // const passwordRef = useRef()
+    // const confirmPasswordRef = useRef()
+
+    const { handleSubmit, register, watch, errors } = useForm()
 
     const {
         signUpEmailState,
@@ -19,8 +20,6 @@ function Signup() {
         setSignUpPasswordState,
         signUpConfirmPasswordState,
         setConfirmSignUpPasswordState,
-        signUpNameState,
-        setSignUpNameState
     } = useContext(CreateContext)
 
     const inputs = [
@@ -30,15 +29,7 @@ function Signup() {
             type: 'email',
             state: signUpEmailState,
             setState: setSignUpEmailState,
-            ref: emailRef
-        },
-        {
-            svg: null,
-            label: 'full name',
-            type: 'text',
-            state: signUpNameState,
-            setState: setSignUpNameState,
-            ref: nameRef
+            ref: {...register("email", {required: "Email is required", pattern: /^\S+@\S+$/i, message: "Please enter a valid email address."})}
         },
         {
             svg: <PasswordSVG />,
@@ -46,9 +37,8 @@ function Signup() {
             type: 'password',
             state: signUpPasswordState,
             setState: setSignUpPasswordState,
-            ref: passwordRef,
+            ref: {...register("password", {required: "You must specify a password",  value: 8, message: "Password must have at least 8 characters."})} 
         },
-
 
         {
             svg: <PasswordSVG />,
@@ -56,34 +46,25 @@ function Signup() {
             type: 'password',
             state: signUpConfirmPasswordState,
             setState: setConfirmSignUpPasswordState,
-            ref: confirmPasswordRef,
-        },
-
-    ]
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        var data = {
-            trader: {
-                email: emailRef.current.value,
-                password: passwordRef.current.value,
-                name: nameRef.current.value,
-                password_confirmation: confirmPasswordRef.current.value
-            }
+            ref: {...register("confirmPassword", {required: "Confirm your password", validate: value => value === watch('password'), message: "Passwords do not match."})}
         }
-        apiCall('signup', null, data)
-            .then(response => console.log(response))
-            .catch(error => console.log(error.response))
-    }
+      
+    ]
+
+    const onSubmit = (data) => console.log({data})
 
     return (
-        <div className="w-screen h-screen bg-primary-blue-light flex flex-col items-center justify-center gap-[40px]">
-            <LogoSVG />
-            <form className="w-[80%] h-auto flex flex-col justify-center items-center gap-[25px]" onSubmit={(e) => handleSubmit(e)}>
+        <div  className="w-screen h-screen bg-primary-blue-light flex flex-col items-center justify-center gap-[40px]">
+             <LogoSVG />
+             <form className="w-[80%] h-auto flex flex-col justify-center items-center gap-[25px]" onSubmit={handleSubmit(onSubmit)}>
                 {inputs.map(({ children, svg, type, state, setState, ref, label }) => {
-                    return <LabelInputs svg={svg} type={type} state={state} setState={setState} ref={ref} label={label}>{children} </LabelInputs>
+                return <LabelInputs svg={svg} type={type} state={state} setState={setState} ref={ref} label={label}>{children} </LabelInputs>
                 })}
-                <div className='w-[200px] h-[40px] rounded-[20px] bg-primary-green flex justify-center items-center gap-[15px]'><p className='text-[16px] font-bold text-primary-black'>SIGN UP</p></div>
-            </form >
+                {/* {errors? } email && <ErrorMessage message={errors.email.message} /> */}
+                {/* {errors? } passsword && <ErrorMessage message={errors.password.message} /> */}
+                {/* {errors? } confirmPassword && <ErrorMessage message={errors.confirmPassword.message} /> */}
+            <button className='w-[200px] h-[40px] rounded-[20px] bg-primary-green flex justify-center items-center gap-[15px]'><p className='text-[16px] font-bold text-primary-black'>SIGN UP</p></button>
+      </form >
         </div>
     )
 }

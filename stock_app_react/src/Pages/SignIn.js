@@ -10,8 +10,8 @@ export default function SignIn() {
   const navigate = useNavigate()
   const emailRef = useRef()
   const passwordRef = useRef()
+
   const {
-    setHeaders,
     loginEmailState,
     setLoginEmailState,
     loginPasswordState,
@@ -57,18 +57,21 @@ export default function SignIn() {
       .catch(error => console.log(error.response))
   }
 
+  userSignIn(email, password)
+}
 
-  return (
-    <div className="w-screen h-screen bg-primary-blue-light flex flex-col items-center justify-center gap-[40px]">
-      <LogoSVG />
-      <form className="w-[80%] h-auto flex flex-col justify-center items-center gap-[25px]" onSubmit={(e) => handleSubmit(e)}>
-        {inputs.map(({ children, svg, type, state, setState, ref, label }) => {
-          return <LabelInputs svg={svg} type={type} state={state} setState={setState} ref={ref} label={label}>{children} </LabelInputs>
-        })}
-        <button className='w-[200px] h-[40px] rounded-[20px] bg-primary-green flex justify-center items-center gap-[15px]'><div className='text-[16px] font-bold text-primary-black'>LOGIN</div>
-        </button>
-      </form >
-      <p className='text-[16px] text-white'>Don't have an account? <Link to="/signup" className="text-primary-green no-underline cursor-pointer">Sign Up</Link></p>
-    </div >
-  )
+
+return (
+  <div className="w-screen h-screen bg-primary-blue-light flex flex-col items-center justify-center gap-[40px]">
+    <LogoSVG />
+    <form className="w-[80%] h-auto flex flex-col justify-center items-center gap-[25px]" onSubmit={(e) => handleSubmit(e)}>
+      {inputs.map(({ children, svg, type, state, setState, ref, label }) => {
+        return <LabelInputs svg={svg} type={type} state={state} setState={setState} ref={ref} label={label}>{children} </LabelInputs>
+      })}
+      <button className='w-[200px] h-[40px] rounded-[20px] bg-primary-green flex justify-center items-center gap-[15px]'><div className='text-[16px] font-bold text-primary-black'>LOGIN</div>
+        { }</button>
+    </form >
+    <p className='text-[16px] text-white'>Don't have an account? <Link to="/Signup" className="text-primary-green no-underline cursor-pointer">Sign Up</Link></p>
+  </div >
+)
 }

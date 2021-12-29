@@ -24,7 +24,7 @@ const LabelInput = forwardRef(({ svg = null, state, setState, type, children = n
       </div>
       <div className="flex flex-col align-center justify-center h-full text-[13px] overflow-hidden w-[90%]">
         <label className={`absolute ${activeStatus} transition pointer-events-none`}>{label.toUpperCase()}</label>
-        <input ref={ref} onClick={() => setState(true)} className='text-black bg-transparent w-full relative outline-none' type={type} required />
+        <input ref={ref} onClick={() => setState(true)} className='text-black bg-transparent w-full relative outline-none' type={type} />
       </div>
       {children}
     </div>
