@@ -12,6 +12,7 @@ module.exports = {
         "text-black-light": "#3F3F3F",
         "text-gray": "#6A6565",
         "custom-gray": "rgba(0, 0, 0, 0.5)",
+        "primary-navbar-color-blue": "#0D3256"
       }
     },
   },
