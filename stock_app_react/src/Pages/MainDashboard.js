@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
-import { CreateContext } from '../Data/DataHooks'
-import { apiCall } from '../Utility/Utility'
+import { CreateContext } from '../../Data/DataHooks'
+import { apiCall } from '../../Utility/Utility'
 import { useNavigate, useLocation } from 'react-router-dom'
 
 

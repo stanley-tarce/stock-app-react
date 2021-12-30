@@ -8,9 +8,11 @@ import { useForm } from 'react-hook-form'
 import { apiCall } from '../Utility/Utility'
 
 function Signup() {
-    // const emailRef = useRef()
-    // const passwordRef = useRef()
-    // const confirmPasswordRef = useRef()
+
+    const emailRef = useRef()
+    const passwordRef = useRef()
+    const confirmPasswordRef = useRef()
+
 
     const { handleSubmit, register, watch, errors } = useForm()
 
@@ -33,6 +35,7 @@ function Signup() {
             type: 'email',
             state: signUpEmailState,
             setState: setSignUpEmailState,
+            value: emailRef,
             ref: {...register("email", {required: "Email is required", pattern: /^\S+@\S+$/i, message: "Please enter a valid email address."})}
         },
         {
@@ -41,6 +44,7 @@ function Signup() {
             type: 'password',
             state: signUpPasswordState,
             setState: setSignUpPasswordState,
+            value: passwordRef,
             ref: {...register("password", {required: "You must specify a password",  value: 8, message: "Password must have at least 8 characters."})} 
         },
 
@@ -50,6 +54,7 @@ function Signup() {
             type: 'password',
             state: signUpConfirmPasswordState,
             setState: setConfirmSignUpPasswordState,
+            value: confirmPasswordRef,
             ref: {...register("confirmPassword", {required: "Confirm your password", validate: value => value === watch('password'), message: "Passwords do not match."})}
         }
       
@@ -74,8 +79,8 @@ function Signup() {
         <div  className="w-screen h-screen bg-primary-blue-light flex flex-col items-center justify-center gap-[40px]">
              <LogoSVG />
              <form className="w-[80%] h-auto flex flex-col justify-center items-center gap-[25px]" onSubmit={handleSubmit(onSubmit)}>
-                {inputs.map(({ children, svg, type, state, setState, ref, label }) => {
-                return <LabelInputs svg={svg} type={type} state={state} setState={setState} ref={ref} label={label}>{children} </LabelInputs>
+                {inputs.map(({ children, svg, type, state, setState, value, ref, label }) => {
+                return <LabelInputs svg={svg} type={type} state={state} setState={setState} value={value} ref={ref} label={label}>{children} </LabelInputs>
                 })}
                 {/* {errors? } email && <ErrorMessage message={errors.email.message} /> */}
                 {/* {errors? } passsword && <ErrorMessage message={errors.password.message} /> */}

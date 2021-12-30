@@ -1,9 +1,9 @@
 import React, { useEffect, forwardRef } from 'react'
-const LabelInput = forwardRef(({ svg = null, state, setState, type, children = null, label }, ref) => {
+const LabelInput = forwardRef(({ svg = null, state, setState, type, children = null, label }, value, ref) => {
   const activeStatus = state ? "translate-y-[-14px]" : "translate-y-0"
-  const clickOutside = (state, ref, setState) => {
+  const clickOutside = (state, ref, value, setState) => {
     return e => {
-      if (state && !ref.current.contains(e.target) && ref.current && ref.current.value.length === 0) {
+      if (state && !value.current.contains(e.target) && value.current && value.current.value.length === 0) {
         setState(false)
       }
     }
