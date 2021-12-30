@@ -5,6 +5,7 @@ import Signup from './Pages/Signup';
 import MainDashboard from './Pages/Trader/MainDashboard';
 import MainAdminDashboard from './Pages/Admin/MainAdminDashboard';
 import AdminDashboardMainDisplay from './Pages/Admin/MainAdminDashboardChildrens/AdminDashboardMainDisplay';
+import AdminDashboardUserDisplay from './Pages/Admin/MainAdminDashboardChildrens/AdminDashboardUserDisplay';
 
 
 
@@ -17,6 +18,7 @@ function App() {
     {
       path: '/admin', element: <MainAdminDashboard />, children: [
         { path: '', element: <AdminDashboardMainDisplay /> },
+        { path: 'user', element: <AdminDashboardUserDisplay /> }
       ]
     }
   ])

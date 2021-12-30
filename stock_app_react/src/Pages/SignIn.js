@@ -58,10 +58,14 @@ export default function SignIn() {
         setUserData({ id: response.data.data.id, email: response.data.data.email, user_type: response.data.data.user_type, name: response.data.data.name })
         if (response.data.data.user_type === 'trader') {
           setTotalData({ ...totalData, TRADERINFO: { ...response.data.data.trader } })
+          setLoginEmailState(false)
+          setLoginPasswordState(false)
           navigate('/main')
         }
         else {
           setTotalData({ ...totalData, ADMININFO: { ...response.data.data.admin } })
+          setLoginEmailState(false)
+          setLoginPasswordState(false)
           navigate('/admin')
         }
 
