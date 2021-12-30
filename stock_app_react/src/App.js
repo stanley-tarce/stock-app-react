@@ -2,7 +2,7 @@ import { useRoutes } from 'react-router-dom';
 import SignIn from './Pages/SignIn';
 import DataHooks from './Data/DataHooks';
 import Signup from './Pages/Signup';
-import MainDashboard from './Pages/MainDashboard';
+import MainDashboard from './Pages/Trader/MainDashboard';
 
 
 
