@@ -21,6 +21,9 @@ function Signup() {
         setSignUpPasswordState,
         signUpConfirmPasswordState,
         setConfirmSignUpPasswordState,
+        setUserData,
+        setTraderData,
+        setHeaders
     } = useContext(CreateContext)
 
     const inputs = [
@@ -62,7 +65,6 @@ function Signup() {
                     setTraderData({ ...response.data.data.trader })
                     //WAIT FOR CONFIRMATION OF YOUR ACCOUNT MODAL
                 }
-
             })
             .catch(error => console.log(error.response))
 
