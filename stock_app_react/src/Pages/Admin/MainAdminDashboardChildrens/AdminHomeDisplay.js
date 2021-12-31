@@ -1,6 +1,6 @@
 import React from 'react'
 
-function AdminDashboardMainDisplay() {
+function AdminHomeDisplay() {
   let adminNavigations = [{ title: 'Client' }, { title: 'Listings' }, { title: 'Support' }]
   return (
     <div className='w-full h-full flex flex-col items-center'>
@@ -14,9 +14,9 @@ function AdminDashboardMainDisplay() {
       <div className='w-[90%] h-[120px] flex flex-col justify-start items-start border-b-2 border-white gap-3'>
         <p className='text-white text-[15px]'>Announcement</p>
       </div>
-
+      Leandra Change this
     </div>
   )
 }
 
-export default AdminDashboardMainDisplay
+export default AdminHomeDisplay

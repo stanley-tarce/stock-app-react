@@ -4,12 +4,10 @@ import DataHooks from './Data/DataHooks';
 import Signup from './Pages/Signup';
 import MainDashboard from './Pages/Trader/MainDashboard';
 import MainAdminDashboard from './Pages/Admin/MainAdminDashboard';
-import AdminDashboardMainDisplay from './Pages/Admin/MainAdminDashboardChildrens/AdminDashboardMainDisplay';
-import AdminDashboardUserDisplay from './Pages/Admin/MainAdminDashboardChildrens/AdminDashboardUserDisplay';
+import AdminHomeDisplay from './Pages/Admin/MainAdminDashboardChildrens/AdminHomeDisplay';
+import AdminUsersDisplay from './Pages/Admin/MainAdminDashboardChildrens/AdminUsersDisplay';
+import AdminPerUserDisplay from './Pages/Admin/MainAdminDashboardChildrens/AdminPerUserDisplay';
 
-
-
-const test = <>Stanleyasd </>
 function App() {
   const routes = useRoutes([
     { path: '/', element: <SignIn />, exact: true },
@@ -17,8 +15,9 @@ function App() {
     { path: '/main', element: <MainDashboard /> },
     {
       path: '/admin', element: <MainAdminDashboard />, children: [
-        { path: '', element: <AdminDashboardMainDisplay /> },
-        { path: 'user', element: <AdminDashboardUserDisplay /> }
+        { path: '', element: <AdminHomeDisplay /> },
+        { path: 'users', element: <AdminUsersDisplay /> },
+        { path: 'users/:id', element: <AdminPerUserDisplay /> }
       ]
     }
   ])
