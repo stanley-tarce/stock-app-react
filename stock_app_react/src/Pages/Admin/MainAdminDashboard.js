@@ -13,9 +13,9 @@ function MainAdminDashboard() {
   const fetchData = Promise.all([apiCall('markets#index', { headers: headers }), apiCall('traders#index', { headers: headers })])
   const [marketButtonRef, userButtonRef, homeButtonRef] = [useRef(), useRef(), useRef()]
   useEffect(() => {
-    location.pathname === '/admin' ? homeButtonRef.current.setAttribute('fill', 'white') : homeButtonRef.current.setAttribute('fill', 'black')
-    location.pathname === '/admin/markets' ? marketButtonRef.current.setAttribute('fill', 'white') : marketButtonRef.current.setAttribute('fill', 'black')
-    location.pathname === '/admin/users' || location.pathname.includes('/admin/users') ? userButtonRef.current.setAttribute('fill', 'white') : userButtonRef.current.setAttribute('fill', 'black')
+    location.pathname === '/admin' ? homeButtonRef.current.setAttribute('fill', 'white') : homeButtonRef.current.setAttribute('fill', '#011640')
+    location.pathname === '/admin/markets' ? marketButtonRef.current.setAttribute('fill', 'white') : marketButtonRef.current.setAttribute('fill', '#011640')
+    location.pathname === '/admin/users' || location.pathname.includes('/admin/users') ? userButtonRef.current.setAttribute('fill', 'white') : userButtonRef.current.setAttribute('fill', '#011640')
   }, [location.pathname])
   useEffect(() => {
     fetchData.then(response => {
