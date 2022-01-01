@@ -7,7 +7,7 @@ import MainAdminDashboard from './Pages/Admin/MainAdminDashboard';
 import AdminHomeDisplay from './Pages/Admin/MainAdminDashboardChildrens/AdminHomeDisplay';
 import AdminUsersDisplay from './Pages/Admin/MainAdminDashboardChildrens/AdminUsersDisplay';
 import AdminPerUserDisplay from './Pages/Admin/MainAdminDashboardChildrens/AdminPerUserDisplay';
-import PendingAccounts from './Components/PendingAccounts';
+// import PendingAccounts from './Components/PendingAccounts';
 
 
 
@@ -17,7 +17,7 @@ function App() {
     { path: '/', element: <SignIn />, exact: true },
     { path: '/signup', element: <Signup />, exact: true },
     { path: '/main', element: <MainDashboard /> },
-    { path: '/pending', element: <PendingAccounts/>},
+    // { path: '/pending', element: <PendingAccounts/>},
     {
       path: '/admin', element: <MainAdminDashboard />, children: [
         { path: '', element: <AdminHomeDisplay /> },
