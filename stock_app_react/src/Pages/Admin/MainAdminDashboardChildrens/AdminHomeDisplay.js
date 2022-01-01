@@ -39,26 +39,20 @@ function AdminHomeDisplay() {
         <button className='sign-out w-2/5 bg-container-light-blue p-2 rounded-3xl self-center' onClick={(e) => signOut(e)}>Sign out</button>
       </section>
 
-      <section className='admin w-[90%] h-auto text-white mt-10 flex flex-col'>
-        <div className='text-2xl text-white font-[400] border-b-2 py-2 mt-5 border-white flex'>Pending</div>
-        <div className='bg-container-light-blue text-white w-full h-36 font-[400] my-8 py-4 flex flex-col rounded-3xl justify-center'>
-          <div className='profile'>
-            {traders?.map(trader => {
-            return <ul className='text-xl flex px-4'>
-              <UserIcon size={"30"} className='mr-2' />
-              <li>{trader.name}</li>
-              </ul>
-            })}
+      <div className='text-2xl w-[90%] text-white font-[400] border-b-2 py-2 mt-5 border-white flex'>Pending</div>
+      <section className='admin w-[90%] h-auto text-white mt-2 flex flex-col overflow-y-auto'>
+        {traders.length !== 0 ? traders.map(trader => {
+          return <div className='bg-container-light-blue text-white w-full h-36 font-[400] my-4 py-4 flex flex-col rounded-3xl justify-center'>
+            <ul>
+              <li classname='flex'><UserIcon size={"40"} className='mx-5 inline-block'/><span className='text-xl'>{trader.name}</span></li>
+            </ul>
+            <div className='buttons flex justify-evenly mt-8'>
+              <button className='bg-alert-green w-1/3 p-2 rounded-3xl'>Approve</button>
+              <button className='bg-alert-red w-1/3 p-2 rounded-3xl'>Reject</button>
+            </div> 
           </div>
-        <div className='buttons flex justify-evenly mt-8'>
-          <button className='bg-alert-green w-1/3 p-2 rounded-3xl'>Approve</button>
-          <button className='bg-alert-red w-1/3 p-2 rounded-3xl'>Reject</button>
-        </div>
-      </div>
+        }): <p className='w-[90%] h-auto text-white text-2xl'>No pending accounts</p> }
       </section>
-
-     
-
     </div>
   )
 }
