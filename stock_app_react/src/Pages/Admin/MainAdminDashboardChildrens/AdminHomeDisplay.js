@@ -51,7 +51,7 @@ function AdminHomeDisplay() {
               <button className='bg-alert-red w-1/3 p-2 rounded-3xl'>Reject</button>
             </div> 
           </div>
-        }): <p className='w-[90%] h-auto text-white text-2xl'>No pending accounts</p> }
+        }): <p className='w-[90%] h-auto text-white text-xl flex self-center'>No pending accounts</p> }
       </section>
     </div>
   )
