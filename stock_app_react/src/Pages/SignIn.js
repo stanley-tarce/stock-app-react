@@ -53,7 +53,6 @@ export default function SignIn() {
     let object = { data: data }
     apiCall('signin', object)
       .then(response => {
-        console.log(response.data.data)
         setHeaders({ 'access-token': response.headers['access-token'], 'client': response.headers['client'], 'uid': response.headers['uid'], 'expiry': response.headers['expiry'] })
         setUserData({ id: response.data.data.id, email: response.data.data.email, user_type: response.data.data.user_type, name: response.data.data.name })
         if (response.data.data.user_type === 'trader') {
@@ -76,8 +75,8 @@ export default function SignIn() {
     <div className="w-screen h-screen bg-primary-blue-light flex flex-col items-center justify-center gap-[40px]">
       <LogoSVG />
       <form className="w-[80%] h-auto flex flex-col justify-center items-center gap-[25px]" onSubmit={(e) => handleSubmit(e)}>
-        {inputs.map(({ children, svg, type, state, setState, ref, label }) => {
-          return <LabelInputs svg={svg} type={type} state={state} setState={setState} ref={ref} label={label}>{children} </LabelInputs>
+        {inputs.map(({ children, svg, type, state, setState, ref, label }, index) => {
+          return <LabelInputs key={index} svg={svg} type={type} state={state} setState={setState} ref={ref} label={label}>{children} </LabelInputs>
         })}
         <button className='w-[200px] h-[40px] rounded-[20px] bg-primary-green flex justify-center items-center gap-[15px]'><div className='text-[16px] font-bold text-primary-black'>LOGIN</div>
           { }</button>

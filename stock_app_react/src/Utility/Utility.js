@@ -41,6 +41,14 @@ export const apiCall = (method, object) => {
             return axios.patch(`${API_DOMAIN}/api/v1/admins/${object.admin_id}/update_global_stocks`, object.data, { headers: object.headers })
         case 'traders#index':
             return axios.get(`${API_DOMAIN}/api/v1/traders`, { headers: object.headers })
+        case 'traders#update_trader_status':
+            return axios.get(`${API_DOMAIN}/api/v1/traders/updatestatus/${object.trader_id}`, { headers: object.headers })
+        case 'traders#reject_trader_status':
+            return axios.get(`${API_DOMAIN}/api/v1/traders/rejectstatus/${object.trader_id}`, { headers: object.headers })
+        case 'traders#pending_trader_status':
+            return axios.get(`${API_DOMAIN}/api/v1/traders/pendingstatus/${object.trader_id}`, { headers: object.headers })
+        case 'traders#update':
+            return axios.patch(`${API_DOMAIN}/api/v1/traders/${object.trader_id}`, object.data, { headers: object.headers })
         default:
             throw new Error(`${method} is not a valid method`)
     }
