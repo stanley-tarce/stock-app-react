@@ -37,8 +37,8 @@ export const apiCall = (method, object) => {
             return axios.patch(`${API_DOMAIN}/api/v1/admins/${object.admin_id}`, object.data, { headers: object.headers })
         case 'admins#destroy':
             return axios.delete(`${API_DOMAIN}/api/v1/admins/${object.admin_id}`, { headers: object.headers })
-        case 'admins#update_global_stocks':
-            return axios.patch(`${API_DOMAIN}/api/v1/admins/${object.admin_id}/update_global_stocks`, object.data, { headers: object.headers })
+        case 'admins#create_trader':
+            return axios.post(`${API_DOMAIN}/api/v1/admins/${object.admin_id}/create_trader`, object.data, { headers: object.headers })
         case 'traders#index':
             return axios.get(`${API_DOMAIN}/api/v1/traders`, { headers: object.headers })
         case 'traders#update_trader_status':
@@ -49,6 +49,8 @@ export const apiCall = (method, object) => {
             return axios.get(`${API_DOMAIN}/api/v1/traders/pendingstatus/${object.trader_id}`, { headers: object.headers })
         case 'traders#update':
             return axios.patch(`${API_DOMAIN}/api/v1/traders/${object.trader_id}`, object.data, { headers: object.headers })
+        case 'markets#update_global_stocks':
+            return axios.get(`${API_DOMAIN}/api/v1/admins/${object.admin_id}/update_global_stocks`, { headers: object.headers })
         default:
             throw new Error(`${method} is not a valid method`)
     }
