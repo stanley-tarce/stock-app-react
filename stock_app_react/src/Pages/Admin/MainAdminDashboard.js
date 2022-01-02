@@ -43,7 +43,6 @@ function MainAdminDashboard() {
     <div className='w-screen h-screen bg-primary-blue-light flex flex-col justify-center'>
       <div className='w-full h-[calc(100%-70px)]'><Outlet /></div>
       <div className='w-full h-[70px] flex justify-between items-center bg-primary-navbar-color-blue '>
-        {console.log(location.pathname)}
         <div className='w-1/3 h-full flex justify-center items-center text-white' onClick={() => navigate('')}><HomeButtonAdmin fill={"black"} ref={homeButtonRef} /></div>
         <div className='w-1/3 h-full flex justify-center items-center text-white' onClick={() => navigate('users')}><UsersButtonAdmin fill={"black"} ref={userButtonRef} /></div>
         <div className='w-1/3 h-full flex justify-center items-center text-white' onClick={() => navigate('markets')}><MarketsButtonAdmin fill={"black"} ref={marketButtonRef} /></div>
