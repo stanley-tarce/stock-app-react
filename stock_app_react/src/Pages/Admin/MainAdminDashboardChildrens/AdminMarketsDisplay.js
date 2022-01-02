@@ -1,39 +1,44 @@
 import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
-import SearchIcon from '../../../Assets/searchicon'
 import { CreateContext } from '../../../Data/DataHooks'
-import UserIcon from '../../../Assets/usericon'
 import { apiCall } from '../../../Utility/Utility'
 
 function AdminMarketsDisplay() {
-    const { totalData, setTotalData, headers, setHeaders } = useContext(CreateContext)
-    const navigate = useNavigate()
+  const { totalData, userData, headers, setHeaders, } = useContext(CreateContext)
+  const navigate = useNavigate()
+  const markets = totalData.MARKETS
+  const loggedInAdmin = userData
 
-    //UPDATE MARKETS FUNC 
-    return (
-        <div className='w-full h-full flex flex-col justify-center items-center'>
-            <p className='w-[90%] h-auto text-white text-[25px] pb-[10px] border-b-[1px] border-white mb-[35px]'>Markets</p>
-            <div className='w-[90%] h-[80%] max-h-[80%] flex flex-col gap-5 '>
-                <div className='w-full h-[60px] bg-container-light-blue rounded-[20px] flex justify-start items-center gap-2 p-2'>
-                    {/* <SearchIcon /> */}
-                    <button onClick={() => {
-                        apiCall('markets#update_global_stocks', { admin_id: totalData.ADMININFO.id, headers: headers }).then(response => {
-                            console.log(response)
-                            //Leanne add Change Headers here or refactor this onCLick
-                        }).catch(error => console.log(error.response))
-                    }} className='w-[90%] h-[95%] bg-transparent outline-none text-white text-[20px]'>UPDATE ALL MARKETS</button>
-                </div>
-                <div className='w-full h-auto overflow-scroll flex flex-col gap-4'>
-                    {totalData.MARKETS.length !== 0 ? totalData.MARKETS.map((market, index) => {
-                        return <div key={index} className='w-full h-[60px] bg-container-light-blue rounded-[20px] hover:bg-blue-400 flex justify-start items-center gap-2 p-2 cursor-pointer'>
-                            <UserIcon size={"30"} />
-                            <p className='w-[90%] max-w-[90%] h-auto text-white text-[20px] pointer-events-none'>{market.symbol} {market.price_per_unit}</p>
-                        </div>
+  const updateAllMarkets = (e) => {
+    e.preventDefault()
+    apiCall('markets#update_global_stocks', { admin_id: loggedInAdmin, headers: headers })
+        .then(response => {
+            if (response.headers['access-token'] !== '') {
+                setHeaders({ ...headers, 'access-token': response.headers['access-token'], 'client': response.headers['client'], 'uid': response.headers['uid'], 'expiry': response.headers['expiry'] })
+            }
+            console.log('updated')
+        }).catch(error => { console.log(error.response) })
+    }
+
+  return (
+    <section className='w-full h-full flex flex-col items-center text-white'>
+        <p className='w-[90%] h-auto text-[25px] mt-10 border-white mb-[35px]'>Markets</p>
+        <div className='w-[90%] h-[83%] flex flex-col gap-4'>
+            <button onClick={(e) => updateAllMarkets(e)} className='bg-primary-green text-[20px] py-4 w-full p-2 rounded-3xl'>UPDATE ALL MARKETS</button>
+            <div className='w-full h-full overflow-scroll flex flex-col gap-4'>
+                {markets.length !== 0 ? markets.map((market, index) => {
+                    return <div key={index} className='w-full flex text-[20px] justify-between items-center bg-container-light-blue rounded-[20px] hover:bg-blue-400 p-2 cursor-pointer'>
+                        <span className='w-[50%] flex items-center justify-start text-left'> 
+                            <img className="rounded-[20px] pointer-events-none" width="45" height="45" src={market.logo.split('"')[1]}/>
+                            <p className=' text-left pl-4 pointer-events-none'>{market.symbol}</p>
+                        </span>
+                        <p className='mr-4 pointer-events-none'>${market.price_per_unit}</p>
+                    </div>
                     }) : <p className='w-[90%] h-auto text-white text-[20px]'>No Market Found</p>}
-                </div>
             </div>
         </div>
-    )
+    </section>
+  ) 
 }
 
 export default AdminMarketsDisplay

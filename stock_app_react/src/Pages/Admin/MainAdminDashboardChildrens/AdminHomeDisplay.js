@@ -9,7 +9,9 @@ function AdminHomeDisplay() {
   const { headers, setHeaders, userData, totalData } = useContext(CreateContext)
   const loggedInAdmin = userData
   const navigate = useNavigate()
-  let traders = totalData.ADMINLISTOFTRADERS.filter(trader => trader.status === 'pending')
+  // let traders = totalData.ADMINLISTOFTRADERS.filter(trader => trader.status === 'pending')
+  const [ clicked, setClicked ] = useState(false)
+  const [traders, setTraders] = useState(totalData.ADMINLISTOFTRADERS.filter(trader => trader.status === 'pending'))
 
   const updateAccountStatus = (e, trader, status) => {
     e.preventDefault()
@@ -18,8 +20,15 @@ function AdminHomeDisplay() {
         if (response.headers['access-token'] !== '') {
           setHeaders({ ...headers, 'access-token': response.headers['access-token'], 'client': response.headers['client'], 'uid': response.headers['uid'], 'expiry': response.headers['expiry'] })
         }
+        setClicked(true)
       }).catch(error => { console.log(error.response) })
   }
+
+  //for re-render
+  useEffect(()=> {
+    setTraders(totalData.ADMINLISTOFTRADERS.filter(trader => trader.status === 'pending'))
+    console.log('render')
+  }, [clicked]);
 
   const signOut = (e) => {
     apiCall('signout', { headers: headers })
