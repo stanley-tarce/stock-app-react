@@ -52,7 +52,4 @@ export const apiCall = (method, object) => {
         default:
             throw new Error(`${method} is not a valid method`)
     }
-
-
-
 }

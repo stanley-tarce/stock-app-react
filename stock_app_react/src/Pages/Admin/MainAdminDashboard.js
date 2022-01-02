@@ -5,7 +5,6 @@ import { CreateContext } from '../../Data/DataHooks'
 import MarketsButtonAdmin from '../../Assets/marketsbuttonadmin'
 import HomeButtonAdmin from '../../Assets/homebuttonadmin'
 import UsersButtonAdmin from '../../Assets/usersbuttonadmin'
-import axios from 'axios'
 function MainAdminDashboard() {
   const { headers, setHeaders, totalData, setTotalData } = useContext(CreateContext)
   const location = useLocation()
@@ -13,9 +12,9 @@ function MainAdminDashboard() {
   const fetchData = Promise.all([apiCall('markets#index', { headers: headers }), apiCall('traders#index', { headers: headers })])
   const [marketButtonRef, userButtonRef, homeButtonRef] = [useRef(), useRef(), useRef()]
   useEffect(() => {
-    location.pathname === '/admin' ? homeButtonRef.current.setAttribute('fill', 'white') : homeButtonRef.current.setAttribute('fill', '#011640')
-    location.pathname === '/admin/markets' ? marketButtonRef.current.setAttribute('fill', 'white') : marketButtonRef.current.setAttribute('fill', '#011640')
-    location.pathname === '/admin/users' || location.pathname.includes('/admin/users') ? userButtonRef.current.setAttribute('fill', 'white') : userButtonRef.current.setAttribute('fill', '#011640')
+    location.pathname === '/admin' ? homeButtonRef.current.setAttribute('fill', 'white') : homeButtonRef.current.setAttribute('fill', '#0F253A')
+    location.pathname === '/admin/markets' ? marketButtonRef.current.setAttribute('fill', 'white') : marketButtonRef.current.setAttribute('fill', '#0F253A')
+    location.pathname === '/admin/users' || location.pathname.includes('/admin/users') ? userButtonRef.current.setAttribute('fill', 'white') : userButtonRef.current.setAttribute('fill', '#0F253A')
   }, [location.pathname])
   useEffect(() => {
     fetchData.then(response => {

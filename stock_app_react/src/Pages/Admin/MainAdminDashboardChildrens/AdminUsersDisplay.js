@@ -1,9 +1,7 @@
 import React, { useContext } from 'react'
 import SearchIcon from '../../../Assets/searchicon'
-// import usericon from '../../../Assets/usericon.png'
 import { CreateContext } from '../../../Data/DataHooks'
 import { useNavigate } from 'react-router-dom'
-// import UserIcon from '../../../Assets/usericon.svg'
 import UserIcon from '../../../Assets/usericon'
 function AdminUsersDisplay() {
   const { totalData, setTotalData } = useContext(CreateContext)

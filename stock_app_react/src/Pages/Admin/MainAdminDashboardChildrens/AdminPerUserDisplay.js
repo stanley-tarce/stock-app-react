@@ -7,7 +7,7 @@ import UserIcon from '../../../Assets/usericon'
 import EditButton from '../../../Assets/editbutton'
 
 function AdminPerUserDisplay() {
-  const [updateRefButton, updateRefButton2] = [useRef(), useRef()]
+  const [updateRefButton, updateRefButton2] = [useRef(), useRef()] 
   const [nameRef, emailRef, walletRef] = [useRef(), useRef(), useRef()]
   const navigate = useNavigate()
   const { totalData, setTotalData, headers, setHeaders } = useContext(CreateContext)
@@ -138,7 +138,6 @@ function AdminPerUserDisplay() {
       <div className='w-[90%] h-auto flex text-white text-[20px] gap-1'>
         <label className='w-[24%] h-auto flex justify-center items-center'>Status:</label>
         <p ref={statRef} >{traderData.status}</p>
-
       </div>
       <div className='w-[calc(100%-24%)] h-auto flex jus  tify-center items-center flex-wrap gap-3'>
         {traderStatus.map(({ name, value }, index) => <button onClick={(e) => updateTraderStatus(e, value)} key={index} className='w-auto h-auto px-4 py-1 bg-button-color-blue-light text-white text-[14px] rounded-[20px]'>{name}</button>)}
