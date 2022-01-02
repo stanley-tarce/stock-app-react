@@ -14,9 +14,9 @@ function AdminUsersDisplay() {
     return navigate(`${id}`)
   }
   return (
-    <div className='w-full h-full flex flex-col justify-center items-center'>
+    <div className='w-full h-full flex flex-col justify-center items-center relative'>
       <p className='w-[90%] h-auto text-white text-[25px] pb-[10px] border-b-[1px] border-white mb-[35px]'>Traders</p>
-      <div className='w-[90%] h-[80%] max-h-[80%] flex flex-col gap-5 '>
+      <div className='w-[90%] h-[70%] max-h-[80%] flex flex-col gap-5 '>
         <div className='w-full h-[60px] bg-container-light-blue rounded-[20px] flex justify-start items-center gap-2 p-2'>
           <SearchIcon />
           <input className='w-[90%] h-[95%] bg-transparent outline-none text-white text-[20px]' placeholder='Search User Here' />
@@ -29,6 +29,10 @@ function AdminUsersDisplay() {
             </div>
           }) : <p className='w-[90%] h-auto text-white text-[20px]'>No Trader Found</p>}
         </div>
+
+      </div>
+      <div onClick={() => navigate('../createtrader')} className='w-[90%] h-[60px] bg-container-light-blue rounded-[20px] flex justify-center items-center gap-2 p-2 text-white text-[20px] hover:bg-blue-400 cursor-pointer'>
+        Create Trader
       </div>
     </div>
   )

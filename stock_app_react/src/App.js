@@ -4,10 +4,8 @@ import DataHooks from './Data/DataHooks';
 import Signup from './Pages/Signup';
 import MainDashboard from './Pages/Trader/MainDashboard';
 import MainAdminDashboard from './Pages/Admin/MainAdminDashboard';
-import AdminHomeDisplay from './Pages/Admin/MainAdminDashboardChildrens/AdminHomeDisplay';
-import AdminUsersDisplay from './Pages/Admin/MainAdminDashboardChildrens/AdminUsersDisplay';
-import AdminPerUserDisplay from './Pages/Admin/MainAdminDashboardChildrens/AdminPerUserDisplay';
-import AdminMarketsDisplay from './Pages/Admin/MainAdminDashboardChildrens/AdminMarketsDisplay';
+import { AdminHomeDisplay, AdminUsersDisplay, AdminPerUserDisplay, AdminCreateTrader, AdminMarketsDisplay } from './Pages/Admin/MainAdminDashboardChildrens'
+// import PendingAccounts from './Components/PendingAccounts';
 
 
 function App() {
@@ -21,6 +19,7 @@ function App() {
         { path: 'users', element: <AdminUsersDisplay /> },
         { path: 'users/:id', element: <AdminPerUserDisplay /> },
         { path: 'markets', element: <AdminMarketsDisplay /> },
+        { path: 'createtrader', element: <AdminCreateTrader /> }
       ]
     }
   ])
