@@ -7,7 +7,7 @@ import UserIcon from '../../../Assets/usericon'
 import EditButton from '../../../Assets/editbutton'
 
 function AdminPerUserDisplay() {
-  const [updateRefButton, updateRefButton2] = [useRef(), useRef()] 
+  const [updateRefButton, updateRefButton2] = [useRef(), useRef()]
   const [nameRef, emailRef, walletRef] = [useRef(), useRef(), useRef()]
   const navigate = useNavigate()
   const { totalData, setTotalData, headers, setHeaders } = useContext(CreateContext)
@@ -49,6 +49,19 @@ function AdminPerUserDisplay() {
     emailRef.current.value = traderData.email
     walletRef.current.value = traderData.wallet
 
+  }
+  const deleteTrader = () => {
+    console.log('deleting')
+    apiCall('traders#delete', { trader_id: traderData.id, headers: headers }).then(response => {
+      console.log(response)
+      if (!(response.headers['access-token'] === '')) {
+        setHeaders({ ...headers, 'access-token': response.headers['access-token'], 'client': response.headers['client'], 'uid': response.headers['uid'], 'expiry': response.headers['expiry'] })
+        console.log('Headers changed at trader delete')
+      }
+      setTraderData({ id: '', name: '', email: '', status: '', wallet: '' })
+      setTotalData({ ...totalData, TRADERINFO: {} })
+      return navigate(-1)
+    }).catch(error => console.log(error.response))
   }
   const updateTraderStatus = (e, status) => {
     e.preventDefault()
@@ -122,7 +135,7 @@ function AdminPerUserDisplay() {
     <div className='w-full h-full flex flex-col justify-center items-center gap-2'>
       <div className='w-[90%] h-auto pb-[10px] border-b-[1px] border-white flex justify-between items-center' >
         <p className='text-white text-[25px]'>{ADMINSHOWTRADER.name}</p>
-        <DeleteButton className={"cursor-pointer"} />
+        <DeleteButton onClick={() => deleteTrader()} className={"cursor-pointer"} />
         <EditButton onClick={() => {
           console.log("clicked")
           setDisabledData(false)

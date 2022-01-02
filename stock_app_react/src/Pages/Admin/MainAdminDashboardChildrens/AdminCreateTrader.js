@@ -13,9 +13,13 @@ function AdminCreateTrader() {
     e.preventDefault()
     let data = { trader: { name: nameRef.current.value, email: emailRef.current.value, password: passwordRef.current.value, password_confirmation: passwordConfirmRef.current.value, wallet: walletRef.current.value } }
     apiCall('admins#create_trader', { headers: headers, data: data, admin_id: totalData.ADMININFO.id }).then(response => {
+      if (!(response.headers['access-token'] === '')) {
+        setHeaders({ ...headers, 'access-token': response.headers['access-token'], 'client': response.headers['client'], 'uid': response.headers['uid'], 'expiry': response.headers['expiry'] })
+        console.log('headers change at create traders admin side')
+      }
       console.log(response)
       return navigate(-1)
-    })
+    }).catch(error => console.log(error.response))
   }
   const handleCancel = (e) => {
     e.preventDefault()

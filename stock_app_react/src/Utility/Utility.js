@@ -29,6 +29,8 @@ export const apiCall = (method, object) => {
             return axios.patch(`${API_DOMAIN}/api/v1/traders/${object.trader_id}/cash_in`, object.data, { headers: object.headers })
         case 'traders#cash_out':
             return axios.patch(`${API_DOMAIN}/api/v1/traders/${object.trader_id}/cash_out`, object.data, { headers: object.headers })
+        case 'traders#delete':
+            return axios.delete(`${API_DOMAIN}/api/v1/traders/${object.trader_id}`, { headers: object.headers })
         case 'admins#index':
             return axios.get(`${API_DOMAIN}/api/v1/admins`, { headers: object.headers })
         case 'admins#show':
@@ -38,7 +40,7 @@ export const apiCall = (method, object) => {
         case 'admins#destroy':
             return axios.delete(`${API_DOMAIN}/api/v1/admins/${object.admin_id}`, { headers: object.headers })
         case 'admins#create_trader':
-            return axios.post(`${API_DOMAIN}/api/v1/admins/${object.admin_id}/create_trader`, object.data, { headers: object.headers })
+            return axios.post(`${API_DOMAIN}/api/v1/admins/create_trader`, object.data, { headers: object.headers })
         case 'traders#index':
             return axios.get(`${API_DOMAIN}/api/v1/traders`, { headers: object.headers })
         case 'traders#update_trader_status':
