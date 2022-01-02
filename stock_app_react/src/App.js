@@ -12,12 +12,11 @@ import TraderUserDisplay from './Pages/Trader/MainTraderDashboardChildren/Trader
 
 function App() {
   const routes = useRoutes([
-    { path: '/', element: <SignIn />, exact: true },     {/*  <div className='w-1/3 h-full flex justify-center items-center text-white' onClick={() => navigate('/trader-wallet')}><WalletButtonTrader fill={"black"} ref={userButtonRef} /></div> */}
+    { path: '/', element: <SignIn />, exact: true },   
     { path: '/signup', element: <Signup />, exact: true },
     { 
       path: '/main', element: <MainDashboard />, children: [
-        { path: '', element: <TraderHomeDisplay /> },
-
+        { path: '', element: <TraderHomeDisplay /> }
       ]
     },
     
