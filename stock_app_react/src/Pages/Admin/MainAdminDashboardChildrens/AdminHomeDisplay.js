@@ -42,18 +42,19 @@ function AdminHomeDisplay() {
   return (
     <div className='w-full h-full flex flex-col items-center'>
       <section className='admin w-[90%] h-auto text-white mt-10 flex flex-col'>
-        <div className='text-2xl border-b-2 border-container-light-blue py-2'>Welcome, {loggedInAdmin.name}!</div>
-        <div className='admin-details py-4'>
+        <div className='text-2xl py-2'>Welcome, {loggedInAdmin.name}!</div>
+        <div className='admin-details flex flex-col py-4 border-2 border-container-light-blue px-4 rounded-3xl'>
           <p className='py-2'>Email: {loggedInAdmin.email}</p>
           <p className='py-2'>Account: <span className='bg-primary-gray px-2 py-1 rounded-3xl'>{loggedInAdmin.user_type}</span></p>
+          <button className='sign-out w-2/5 bg-container-light-blue my-3 p-2 rounded-3xl self-center' onClick={(e) => signOut(e)}>Sign out</button>
         </div>
-        <button className='sign-out w-2/5 bg-container-light-blue p-2 rounded-3xl self-center' onClick={(e) => signOut(e)}>Sign out</button>
+      
       </section>
 
-      <div className='text-2xl w-[90%] text-white font-[400] border-b-2 py-2 mt-5 border-container-light-blue flex'>Pending</div>
-      <section className='admin w-[90%] h-auto text-white mt-2 flex flex-col overflow-y-auto'>
+      <div className='text-2xl w-[90%] text-white font-[400] py-2 mt-4 flex'>Pending</div>
+      <section className='admin w-[90%] h-auto text-white flex flex-col overflow-y-auto'>
         {traders.length !== 0 ? traders.map((trader, index) => {
-          return <div key={index} className='bg-container-light-blue text-white w-full h-36 font-[400] my-4 py-4 flex flex-col rounded-3xl justify-center'>
+          return <div key={index} className='bg-container-light-blue text-white w-full h-36 font-[400] my-2 py-4 flex flex-col rounded-3xl justify-center'>
             <ul>
               <li classname='flex'><UserIcon size={"40"} className='mx-5 inline-block'/><span className='text-xl'>{trader.name}</span></li>
             </ul>

@@ -22,7 +22,7 @@ function AdminMarketsDisplay() {
 
   return (
     <section className='w-full h-full flex flex-col items-center text-white'>
-        <p className='w-[90%] h-auto text-[25px] mt-10 border-white mb-[35px]'>Markets</p>
+        <p className='w-[90%] h-auto text-2xl  mt-10 border-white mb-[35px]'>Markets</p>
         <div className='w-[90%] h-[83%] flex flex-col gap-4'>
             <button onClick={(e) => updateAllMarkets(e)} className='bg-primary-green text-[20px] py-4 w-full p-2 rounded-3xl'>UPDATE ALL MARKETS</button>
             <div className='w-full h-full overflow-scroll flex flex-col gap-4'>
