@@ -7,14 +7,16 @@ function AdminUsersDisplay() {
   const { totalData, setTotalData } = useContext(CreateContext)
   const navigate = useNavigate()
   const goToUser = (e) => {
+    console.log(id)
     e.preventDefault()
     let name = e.target.innerText
     console.log("NAME")
     console.log(name)
     let id = totalData.ADMINLISTOFTRADERS.find(user => user.name.includes(name)).id
-    console.log(id)
+    
     return navigate(`${id}`)
   }
+  console.log(totalData.ADMINLISTOFTRADERS)
   return (
     <div className='w-full h-full flex flex-col justify-center items-center relative gap-3'>
       <p className='w-[90%] h-auto text-white text-[25px] pb-[10px] border-b-[1px] border-white mb-[20px]'>Traders</p>
