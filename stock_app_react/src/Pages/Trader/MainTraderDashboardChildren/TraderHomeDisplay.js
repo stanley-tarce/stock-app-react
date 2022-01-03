@@ -2,7 +2,7 @@ import React, { useRef, useContext, useEffect } from 'react'
 /* import { CreateContext } from '../../Data/DataHooks' */
 import DashboardAds from '../../../Assets/dashboardads'
 import SearchIcon from '../../../Assets/searchicon'
-import WatchlistIcon from '../../../Assets/watchlisticon'
+
 function TraderHomeDisplay() {
     /* const { totalData, setTotalData } = useContext(CreateContext) */
 

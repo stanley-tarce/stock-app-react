@@ -3,7 +3,6 @@ import { CreateContext } from '../../Data/DataHooks'
 import { apiCall } from '../../Utility/Utility'
 import { Outlet, useNavigate, useLocation } from 'react-router-dom'
 import HomeButtonTrader from '../../Assets/homebuttontrader'
-import MarketsButtonTrader from '../../Assets/marketsbuttontrader'
 import UserButtonTrader from '../../Assets/usertraderbutton'
 import WalletButtonTrader from '../../Assets/walletbuttontrader'
 
@@ -11,19 +10,17 @@ function MainDashboard() {
   const location = useLocation()
   const navigate = useNavigate()
   const homeButtonRef = useRef()
-  const marketButtonRef = useRef()
   const walletButtonRef = useRef()
   const userButtonRef = useRef()
   
   const { headers, totalData, setTotalData, setHeaders } = useContext(CreateContext)
   const fetchData = Promise.all([apiCall('markets#index', { headers: headers }), apiCall('stocks#index', { headers: headers, trader_id: totalData.TRADERINFO.id }), apiCall('transactionhistories#index', { headers: headers, trader_id: totalData.TRADERINFO.id })])
   
-  useEffect(() => {
+/*   useEffect(() => {
     location.pathname === '/main' ? homeButtonRef.current.setAttribute('fill', 'white') : homeButtonRef.current.setAttribute('fill', 'black')
-    location.pathname === '/tradermarkets' ? marketButtonRef.current.setAttribute('fill', 'white') : marketButtonRef.current.setAttribute('fill', 'black')
     location.pathname === '/traderwallet' ? walletButtonRef.current.setAttribute('fill', 'white') : marketButtonRef.current.setAttribute('fill', 'black')
     location.pathname === '/traderuser' || location.pathname.includes('/admin/users') ? userButtonRef.current.setAttribute('fill', 'white') : userButtonRef.current.setAttribute('fill', 'black')
-  }, [location.pathname]) 
+  }, [location.pathname])  */
   
   useEffect(() => {
     console.log(headers)
@@ -44,16 +41,16 @@ function MainDashboard() {
     })
   }, [location.pathname])
 
-console.log(totalData.TRADERINFO.name)
 
-
+  console.log(totalData.TRADERINFO.name)
+  
   return (
     <div className='w-screen h-screen bg-primary-blue-light flex flex-col justify-center'>
     <div className='w-full h-[calc(100%-70px)]'><Outlet /></div>
     <div className='w-full h-[70px] flex justify-between items-center bg-primary-navbar-color-blue '>
       <div className='w-1/3 h-full flex justify-center items-center text-white' onClick={() => navigate('')}><HomeButtonTrader fill={"black"} ref={homeButtonRef} /></div>
-      <div className='w-1/3 h-full flex justify-center items-center text-white' onClick={() => navigate('/traderwallet')}><WalletButtonTrader fill={"black"} ref={walletButtonRef} /></div>
-      <div className='w-1/3 h-full flex justify-center items-center text-white' onClick={() => navigate('/traderuser')}><UserButtonTrader fill={"black"} ref={userButtonRef} /></div>
+      <div className='w-1/3 h-full flex justify-center items-center text-white' onClick={() => navigate('traderwallet')}><WalletButtonTrader fill={"black"} ref={walletButtonRef} /></div>
+      <div className='w-1/3 h-full flex justify-center items-center text-white' onClick={() => navigate('traderuser')}><UserButtonTrader fill={"black"} ref={userButtonRef} /></div>
     </div>
   </div>
   )

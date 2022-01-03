@@ -16,7 +16,8 @@ function App() {
     { path: '/signup', element: <Signup />, exact: true },
     { 
       path: '/main', element: <MainDashboard />, children: [
-        { path: '', element: <TraderHomeDisplay /> }
+        { path: '', element: <TraderHomeDisplay /> },
+        { path: 'traderuser', element: <TraderUserDisplay /> }
       ]
     },
     

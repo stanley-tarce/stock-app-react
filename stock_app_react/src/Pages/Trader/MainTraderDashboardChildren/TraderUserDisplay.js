@@ -7,7 +7,7 @@ import UserIcon from '../../../Assets/usericon'
 import EditButton from '../../../Assets/editbutton'
 import { toast } from 'react-hot-toast'
 
-function TraderUserDisplay() {
+function AdminPerUserDisplay() {
   const [updateRefButton, updateRefButton2] = [useRef(), useRef()]
   const [nameRef, emailRef, walletRef] = [useRef(), useRef(), useRef()]
   const navigate = useNavigate()
@@ -20,6 +20,8 @@ function TraderUserDisplay() {
   const [disabledData, setDisabledData] = useState(true)
   const updateTrader = (e) => {
     e.preventDefault()
+    // setTraderData({ ...traderData, name: nameRef.current.value, email: emailRef.current.value, wallet: walletRef.current.value })
+    // console.log(`New Data`)
     console.log({ name: nameRef.current.value, email: emailRef.current.value, wallet: walletRef.current.value })
     apiCall('traders#update', { trader_id: traderData.id, headers: headers, data: { trader: { name: nameRef.current.value, email: emailRef.current.value, wallet: walletRef.current.value } } }).then(response => {
       console.log(response)
@@ -174,4 +176,4 @@ function TraderUserDisplay() {
   )
 }
 
-export default TraderUserDisplay
+export default AdminPerUserDisplay
