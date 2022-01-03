@@ -62,20 +62,23 @@ function TraderUserDisplay() {
 
   return (
     <div className='w-full h-full flex flex-col justify-center items-center gap-2'>
-      <div className='w-[90%] h-auto pb-[10px] border-b-[1px] border-white flex justify-between items-center' >
-        <p className='text-white text-[25px]'>{TRADERINFO.name}</p>
-      </div>
-      <UserIcon className={"w-auto h-auto p-[50px]"} size={'130'} />
-      {traderInfo.map(({ label, ...input }, index) =>
-        <div key={index} className='w-[90%] h-auto flex text-white text-[20px]'>
-          <label className='w-[24%] h-auto flex justify-center items-center'>{label}</label>
-          <input className='h-full text-[15px] bg-transparent outline-none w-[calc(100%-24%)] flex justify-center items-center'{...input} />
+        {/* Profile header */}
+        <div className='fixed top-[10%] w-[90%] h-auto pb-[10px] border-b-[1px] border-white flex justify-between items-center' >
+            <p className='text-white text-[25px]'>Profile</p>
+        </div>
+        
+        <UserIcon className={"w-auto h-auto p-[40px]"} size={'130'} />
+            {traderInfo.map(({ label, ...input }, index) =>
+                <div key={index} className='w-[90%] h-auto flex text-white text-[20px]'>
+                <label className='w-[24%] h-auto flex justify-center items-center'>{label}</label>
+                <input className='h-full text-[15px] bg-transparent outline-none w-[calc(100%-24%)] flex justify-center items-center'{...input} />
 
-        </div>)}
-      <div className='w-[90%] h-auto flex text-white text-[20px] gap-1'>
-        <label className='w-[24%] h-auto flex justify-center items-center'>Status:</label>
-        <p ref={statRef} >{TRADERINFO.status}</p>
-      </div>
+                </div>)}
+        
+        <div className='w-[90%] h-auto flex text-white text-[20px] gap-1'>
+            <label className='w-[24%] h-auto flex justify-center items-center'>Status:</label>
+            <p ref={statRef} >{TRADERINFO.status}</p>
+        </div>
 
       
     </div>

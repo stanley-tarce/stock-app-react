@@ -9,6 +9,7 @@ import AdminUsersDisplay from './Pages/Admin/MainAdminDashboardChildrens/AdminUs
 import AdminPerUserDisplay from './Pages/Admin/MainAdminDashboardChildrens/AdminPerUserDisplay';
 import TraderHomeDisplay from './Pages/Trader/MainTraderDashboardChildren/TraderHomeDisplay';
 import TraderUserDisplay from './Pages/Trader/MainTraderDashboardChildren/TraderUserDisplay'
+import TraderWalletDisplay from './Pages/Trader/MainTraderDashboardChildren/TraderWalletDisplay';
 
 function App() {
   const routes = useRoutes([
@@ -17,6 +18,7 @@ function App() {
     { 
       path: '/main', element: <MainDashboard />, children: [
         { path: '', element: <TraderHomeDisplay /> },
+        { path: 'traderwallet', element: <TraderWalletDisplay /> },
         { path: 'traderuser', element: <TraderUserDisplay /> }
       ]
     },

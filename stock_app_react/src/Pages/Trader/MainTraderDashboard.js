@@ -40,9 +40,6 @@ function MainDashboard() {
       }
     })
   }, [location.pathname])
-
-
-  console.log(totalData.TRADERINFO.name)
   
   return (
     <div className='w-screen h-screen bg-primary-blue-light flex flex-col justify-center'>

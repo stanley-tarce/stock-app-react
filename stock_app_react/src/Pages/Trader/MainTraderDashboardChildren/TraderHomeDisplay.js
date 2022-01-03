@@ -6,11 +6,15 @@ import { CreateContext } from '../../../Data/DataHooks'
 function TraderHomeDisplay() {
 
 return(
-        <div className='w-screen h-screen bg-primary-blue-light flex flex-col items-center justify-center gap-[20px]'>
+        <div className='w-full h-full bg-primary-blue-light flex flex-col items-center justify-center gap-[20px]'>
                 {/* Dashboard header */}
-                <div className=''>
-                    <h2 className='fixed top-12 left-0 p-4 font-bold text-white text-2xl'>Dashboard </h2>
-                    <div><DashboardAds className='p-10'/></div>
+                <div className='w-[90%] h-auto pb-[10px] flex justify-between items-center'>
+                    <div className='fixed top-[10%] w-[90%] h-auto pb-[10px] border-b-[1px] border-white flex justify-between items-center' >
+                          <h2 className='text-white text-[25px]'>Dashboard </h2>
+                    </div>
+                    <div  className='p-3.5'>
+                        <DashboardAds/>
+                    </div>
                 </div>
 
                 {/* Search Stock */}
