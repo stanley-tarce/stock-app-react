@@ -3,7 +3,6 @@ import { CreateContext } from '../../Data/DataHooks'
 import { apiCall } from '../../Utility/Utility'
 import { Outlet, useNavigate, useLocation } from 'react-router-dom'
 import HomeButtonTrader from '../../Assets/homebuttontrader'
-import MarketsButtonTrader from '../../Assets/marketsbuttontrader'
 import UserButtonTrader from '../../Assets/usertraderbutton'
 import WalletButtonTrader from '../../Assets/walletbuttontrader'
 
