@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { CreateContext } from '../../../Data/DataHooks'
 import { apiCall } from '../../../Utility/Utility'
+import { toast } from 'react-hot-toast'
 
 function AdminMarketsDisplay() {
   const { totalData, userData, headers, setHeaders, } = useContext(CreateContext)
@@ -23,12 +24,12 @@ function AdminMarketsDisplay() {
 
   const updateAllMarkets = (e) => {
     e.preventDefault()
-    apiCall('markets#update_global_stocks', { admin_id: loggedInAdmin, headers: headers })
+    apiCall('markets#update_global_stocks', { admin_id: userData.id, headers: headers })
       .then(response => {
         if (response.headers['access-token'] !== '') {
           setHeaders({ ...headers, 'access-token': response.headers['access-token'], 'client': response.headers['client'], 'uid': response.headers['uid'], 'expiry': response.headers['expiry'] })
         }
-        console.log('updated')
+        toast(response.data.message, { type: 'success' })
       }).catch(error => { console.log(error.response) })
   }
 
