@@ -5,7 +5,9 @@ import Signup from './Pages/Signup';
 import MainDashboard from './Pages/Trader/MainTraderDashboard';
 import MainAdminDashboard from './Pages/Admin/MainAdminDashboard';
 import { AdminHomeDisplay, AdminUsersDisplay, AdminPerUserDisplay, AdminCreateTrader, AdminMarketsDisplay } from './Pages/Admin/MainAdminDashboardChildrens'
-import { Toaster, toast } from 'react-hot-toast'
+import { Toaster } from 'react-hot-toast'
+import { TraderHomeDisplay } from './Pages/Trader/MainTraderDashboardChildren';
+
 // import PendingAccounts from './Components/PendingAccounts';
 
 

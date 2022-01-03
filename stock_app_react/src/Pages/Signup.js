@@ -1,5 +1,4 @@
 import { useRef, useContext } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
 import { CreateContext } from '../Data/DataHooks'
 import LogoSVG from '../Assets/logosvg'
 import EmailSVG from '../Assets/emailsvg'
@@ -10,15 +9,12 @@ import { toast } from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 
 function Signup() {
-    const navigate = useNavigate()
     const emailRef = useRef('')
     const nameRef = useRef('')
     const passwordRef = useRef('')
     const confirmPasswordRef = useRef('')
 
     const {
-        signUpNameState,
-        setSignUpNameState,
         signUpEmailState,
         setSignUpEmailState,
         signUpPasswordState,
@@ -29,7 +25,7 @@ function Signup() {
         setSignUpNameState
     } = useContext(CreateContext)
 
-    const navigate = useNavigate
+    const navigate = useNavigate()
 
     const inputs = [
         {
@@ -42,14 +38,7 @@ function Signup() {
             ref: nameRef,
 
         },
-        {
-            svg: <EmailSVG />,
-            label: 'name',
-            type: 'name',
-            state: signUpNameState,
-            setState: setSignUpNameState,
-            ref: { ...register("name", { required: "Name is required", message: "Please enter a valid email address." }) }
-        },
+
         {
             svg: <EmailSVG />,
             label: 'email',
@@ -96,7 +85,6 @@ function Signup() {
         })
     }
 
-    navigate('/main')
 
 
     return (
@@ -106,11 +94,9 @@ function Signup() {
                 {inputs.map(({ children, svg, type, state, setState, formName, form, ref, label }) => {
                     return <LabelInputs svg={svg} type={type} state={state} setState={setState} ref={ref} label={label}>{children} </LabelInputs>
                 })}
-                {/* {errors? } email && <ErrorMessage message={errors.email.message} /> */}
-                {/* {errors? } passsword && <ErrorMessage message={errors.password.message} /> */}
-                {/* {errors? } confirmPassword && <ErrorMessage message={errors.confirmPassword.message} /> */}
+
                 <input type="submit" className='w-[200px] h-[40px] rounded-[20px] bg-primary-green flex justify-center items-center gap-[15px] text-[16px] font-bold text-primary-black' name='Sign Up' />
-                {/* <button onClick={handleSubmit(e)=> onSubmit(e)} className='w-[200px] h-[40px] rounded-[20px] bg-primary-green flex justify-center items-center gap-[15px]'><p className='text-[16px] font-bold text-primary-black'>SIGN UP</p></button> */}
+
             </form >
         </div>
     )
