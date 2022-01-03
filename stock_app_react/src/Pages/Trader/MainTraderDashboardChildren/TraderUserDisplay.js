@@ -14,9 +14,11 @@ function TraderUserDisplay() {
   const { id } = useParams()
   const location = useLocation()
   const [traderData, setTraderData] = useState({ id: '', name: '', email: '', status: '', wallet: '' })
-  const { headers, totalData, setTotalData, setHeaders } = useContext(CreateContext)
+  const { headers, totalData, setTotalData, setHeaders, userData, setUserData } = useContext(CreateContext)
   const fetchData = Promise.all([apiCall('markets#index', { headers: headers }), apiCall('stocks#index', { headers: headers, trader_id: totalData.TRADERINFO.id }), apiCall('transactionhistories#index', { headers: headers, trader_id: totalData.TRADERINFO.id })])
   
+
+
   useEffect(() => {
     console.log(headers)
     fetchData.then(response => {
@@ -75,10 +77,13 @@ function TraderUserDisplay() {
           MARKETS: [],
           MARKETINFO: {},
         })
+        setUserData()
         setHeaders({ 'access-token': '', 'client': '', 'uid': '', 'expiry': '' })
         navigate('/')
+        console.log('exit')
       }
       )
+    
   }
 
   return (

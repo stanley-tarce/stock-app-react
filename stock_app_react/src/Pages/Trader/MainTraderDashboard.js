@@ -6,7 +6,7 @@ import HomeButtonTrader from '../../Assets/homebuttontrader'
 import UserButtonTrader from '../../Assets/usertraderbutton'
 import WalletButtonTrader from '../../Assets/walletbuttontrader'
 
-function MainDashboard() {
+function MainTraderDashboard() {
   const location = useLocation()
   const navigate = useNavigate()
   const homeButtonRef = useRef()
@@ -53,4 +53,4 @@ function MainDashboard() {
   )
 }
 
-export default MainDashboard
+export default MainTraderDashboard

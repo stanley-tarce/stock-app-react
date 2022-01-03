@@ -2,7 +2,7 @@ import { useRoutes } from 'react-router-dom';
 import SignIn from './Pages/SignIn';
 import DataHooks from './Data/DataHooks';
 import Signup from './Pages/Signup';
-import MainDashboard from './Pages/Trader/MainTraderDashboard';
+import MainTraderDashboard from './Pages/Trader/MainTraderDashboard';
 import MainAdminDashboard from './Pages/Admin/MainAdminDashboard';
 import AdminHomeDisplay from './Pages/Admin/MainAdminDashboardChildrens/AdminHomeDisplay';
 import AdminUsersDisplay from './Pages/Admin/MainAdminDashboardChildrens/AdminUsersDisplay';
@@ -16,7 +16,7 @@ function App() {
     { path: '/', element: <SignIn />, exact: true },   
     { path: '/signup', element: <Signup />, exact: true },
     { 
-      path: '/main', element: <MainDashboard />, children: [
+      path: '/main', element: <MainTraderDashboard />, children: [
         { path: '', element: <TraderHomeDisplay /> },
         { path: 'traderwallet', element: <TraderWalletDisplay /> },
         { path: 'traderuser', element: <TraderUserDisplay /> }
