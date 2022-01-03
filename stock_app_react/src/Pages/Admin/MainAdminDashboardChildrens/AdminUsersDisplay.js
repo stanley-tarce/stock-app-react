@@ -9,6 +9,8 @@ function AdminUsersDisplay() {
   const goToUser = (e) => {
     e.preventDefault()
     let name = e.target.innerText
+    console.log("NAME")
+    console.log(name)
     let id = totalData.ADMINLISTOFTRADERS.find(user => user.name.includes(name)).id
     console.log(id)
     return navigate(`${id}`)

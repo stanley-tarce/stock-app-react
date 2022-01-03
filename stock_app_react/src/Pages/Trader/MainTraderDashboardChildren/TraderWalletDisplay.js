@@ -2,8 +2,8 @@ import React from 'react'
 
 function TraderWalletDisplay() {
   return (
-    <div>
-
+    <div className='w-full h-full'>
+      asd
     </div>
   )
 }

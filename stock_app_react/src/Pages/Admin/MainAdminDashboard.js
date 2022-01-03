@@ -20,15 +20,11 @@ function MainAdminDashboard() {
     fetchData.then(response => {
       const [markets, traders] = response
       setTotalData({ ...totalData, MARKETS: [...markets.data], ADMINLISTOFTRADERS: [...traders.data] })
-      if (markets.headers['access-token'] === '') {
-      }
-      else {
+      if (!(markets.headers['access-token'] === '')) {
         setHeaders({ ...headers, 'access-token': markets.headers['access-token'], 'client': markets.headers['client'], 'uid': markets.headers['uid'], 'expiry': markets.headers['expiry'] })
         console.log("Headers Changed for Markets")
       }
-      if (traders.headers['access-token'] === '') {
-      }
-      else {
+      if (!(traders.headers['access-token'] === '')) {
         setHeaders({ ...headers, 'access-token': traders.headers['access-token'], 'client': traders.headers['client'], 'uid': traders.headers['uid'], 'expiry': traders.headers['expiry'] })
         console.log("Headers Changed for Traders")
       }
