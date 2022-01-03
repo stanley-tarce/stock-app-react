@@ -51,7 +51,6 @@ function AdminHomeDisplay() {
       }
       )
   }
-
   return (
     <div className='w-full h-full flex flex-col items-center'>
       <section className='admin w-[90%] h-auto text-white mt-10 flex flex-col'>

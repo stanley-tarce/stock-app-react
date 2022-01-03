@@ -9,6 +9,17 @@ function AdminMarketsDisplay() {
   const markets = totalData.MARKETS
   const loggedInAdmin = userData
 
+//   console.log(totalData.MARKETS.symbol)
+
+  const goToMarket = (e) => {
+    e.preventDefault()
+    let symbol = e.target.firstChild.lastChild.innerText
+    let id = totalData.MARKETS.find(market => market.symbol.includes(symbol)).id
+    console.log(id)
+
+    return navigate(`${id}`)
+  }
+
   const updateAllMarkets = (e) => {
     e.preventDefault()
     apiCall('markets#update_global_stocks', { admin_id: loggedInAdmin, headers: headers })
@@ -27,8 +38,8 @@ function AdminMarketsDisplay() {
             <button onClick={(e) => updateAllMarkets(e)} className='bg-primary-green text-[20px] py-4 w-full p-2 rounded-3xl'>UPDATE ALL MARKETS</button>
             <div className='w-full h-full overflow-scroll flex flex-col gap-4'>
                 {markets.length !== 0 ? markets.map((market, index) => {
-                    return <div key={index} className='w-full flex text-[20px] justify-between items-center bg-container-light-blue rounded-[20px] hover:bg-blue-400 p-2 cursor-pointer'>
-                        <span className='w-[50%] flex items-center justify-start text-left'> 
+                    return <div key={index}  onClick={(e) => goToMarket(e)} className='w-full flex text-[20px] justify-between items-center bg-container-light-blue rounded-[20px] hover:bg-blue-400 p-2 cursor-pointer'>
+                        <span className='w-[50%] flex pointer-events-none items-center justify-start text-left'> 
                             <img className="rounded-[20px] pointer-events-none" width="45" height="45" src={market.logo.split('"')[1]}/>
                             <p className=' text-left pl-4 pointer-events-none'>{market.symbol}</p>
                         </span>
