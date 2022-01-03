@@ -17,7 +17,7 @@ function TraderUserDisplay() {
   const { headers, totalData, setTotalData, setHeaders, userData, setUserData } = useContext(CreateContext)
   const fetchData = Promise.all([apiCall('markets#index', { headers: headers }), apiCall('stocks#index', { headers: headers, trader_id: totalData.TRADERINFO.id }), apiCall('transactionhistories#index', { headers: headers, trader_id: totalData.TRADERINFO.id })])
   
-
+  
 
   useEffect(() => {
     console.log(headers)
@@ -39,7 +39,9 @@ function TraderUserDisplay() {
   }, [location.pathname])
 
   const { TRADERINFO } = totalData
-  console.log(totalData)
+  
+  const {loggedTrader} = userData
+  console.log(userData)
 
   let traderInfo = [
     { label: 'Name:', type: 'text', defaultValue: TRADERINFO.name, ref: nameRef },
@@ -77,10 +79,9 @@ function TraderUserDisplay() {
           MARKETS: [],
           MARKETINFO: {},
         })
-        setUserData()
+        setUserData({})
         setHeaders({ 'access-token': '', 'client': '', 'uid': '', 'expiry': '' })
         navigate('/')
-        console.log('exit')
       }
       )
     
@@ -91,7 +92,7 @@ function TraderUserDisplay() {
         {/* Profile header */}
         <div className='fixed top-[10%] w-[90%] h-auto pb-[10px] border-b-[1px] border-white flex justify-between items-center' >
             <p className='text-white text-[25px]'>Profile</p>
-            <button oonClick={(e) => signOut(e)}><SignOutIcon /></button>
+            <button onClick={(e) => signOut(e)}><SignOutIcon /></button>
         </div>
         
         <UserIcon className={"w-auto h-auto p-[40px]"} size={'130'} />
