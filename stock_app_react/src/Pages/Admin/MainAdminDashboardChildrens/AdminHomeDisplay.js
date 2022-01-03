@@ -10,7 +10,7 @@ function AdminHomeDisplay() {
   const loggedInAdmin = userData
   const navigate = useNavigate()
   // let traders = totalData.ADMINLISTOFTRADERS.filter(trader => trader.status === 'pending')
-  const [ clicked, setClicked ] = useState(false)
+  const [clicked, setClicked] = useState(false)
   const [traders, setTraders] = useState(totalData.ADMINLISTOFTRADERS.filter(trader => trader.status === 'pending'))
 
   const updateAccountStatus = (e, trader, status) => {
@@ -25,7 +25,7 @@ function AdminHomeDisplay() {
   }
 
   //for re-render
-  useEffect(()=> {
+  useEffect(() => {
     setTraders(totalData.ADMINLISTOFTRADERS.filter(trader => trader.status === 'pending'))
     console.log('render')
   }, [clicked]);
@@ -36,7 +36,7 @@ function AdminHomeDisplay() {
         setHeaders({ 'access-token': '', 'client': '', 'uid': '', 'expiry': '' })
         navigate('/')
       }
-    )
+      )
   }
 
   return (
@@ -48,7 +48,7 @@ function AdminHomeDisplay() {
           <p className='py-2'>Account: <span className='bg-primary-gray px-2 py-1 rounded-3xl'>{loggedInAdmin.user_type}</span></p>
           <button className='sign-out w-2/5 bg-container-light-blue my-3 p-2 rounded-3xl self-center' onClick={(e) => signOut(e)}>Sign out</button>
         </div>
-      
+
       </section>
 
       <div className='text-2xl w-[90%] text-white font-[400] py-2 mt-4 flex'>Pending</div>
@@ -56,14 +56,14 @@ function AdminHomeDisplay() {
         {traders.length !== 0 ? traders.map((trader, index) => {
           return <div key={index} className='bg-container-light-blue text-white w-full h-36 font-[400] my-2 py-4 flex flex-col rounded-3xl justify-center'>
             <ul>
-              <li classname='flex'><UserIcon size={"40"} className='mx-5 inline-block'/><span className='text-xl'>{trader.name}</span></li>
+              <li className='flex'><UserIcon size={"40"} className='mx-5 inline-block' /><span className='text-xl'>{trader.name}</span></li>
             </ul>
             <div className='buttons flex justify-evenly mt-8'>
               <button onClick={(e) => updateAccountStatus(e, trader, 'update')} className='bg-primary-green w-1/3 p-2 rounded-3xl'>Approve</button>
               <button onClick={(e) => updateAccountStatus(e, trader, 'reject')} className='bg-alert-red w-1/3 p-2 rounded-3xl'>Reject</button>
-            </div> 
+            </div>
           </div>
-        }): <p className='w-[90%] h-auto text-white text-xl flex self-center'>No pending accounts</p> }
+        }) : <p className='w-[90%] h-auto text-white text-xl flex self-center'>No pending accounts</p>}
       </section>
     </div>
   )

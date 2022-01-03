@@ -6,6 +6,7 @@ import EmailSVG from '../Assets/emailsvg'
 import PasswordSVG from '../Assets/passwordsvg'
 import LabelInputs from '../Components/LabelInput'
 import { apiCall } from '../Utility/Utility'
+import { toast } from 'react-hot-toast'
 export default function SignIn() {
   const navigate = useNavigate()
   const emailRef = useRef()
@@ -59,17 +60,23 @@ export default function SignIn() {
           setTotalData({ ...totalData, TRADERINFO: { ...response.data.data.trader } })
           setLoginEmailState(false)
           setLoginPasswordState(false)
+          toast(`Welcome ${response.data.data.name}`, { type: 'success' })
           navigate('/main')
         }
         else {
           setTotalData({ ...totalData, ADMININFO: { ...response.data.data.admin } })
+          toast(`Welcome ${response.data.data.name}`, { type: 'success' })
           setLoginEmailState(false)
           setLoginPasswordState(false)
           navigate('/admin')
         }
 
       })
-      .catch(error => console.log(error.response))
+      .catch(error => {
+        // console.log(error.response.data.errors)
+        const errors = error.response?.data.errors
+        errors.forEach(error => toast(error, { type: 'error' }))
+      })
   }
   return (
     <div className="w-screen h-screen bg-primary-blue-light flex flex-col items-center justify-center gap-[40px]">

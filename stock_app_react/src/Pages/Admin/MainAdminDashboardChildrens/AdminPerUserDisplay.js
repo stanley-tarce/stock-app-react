@@ -5,6 +5,7 @@ import { apiCall } from '../../../Utility/Utility'
 import DeleteButton from '../../../Assets/deletebutton'
 import UserIcon from '../../../Assets/usericon'
 import EditButton from '../../../Assets/editbutton'
+import { toast } from 'react-hot-toast'
 
 function AdminPerUserDisplay() {
   const [updateRefButton, updateRefButton2] = [useRef(), useRef()]
@@ -19,8 +20,8 @@ function AdminPerUserDisplay() {
   const [disabledData, setDisabledData] = useState(true)
   const updateTrader = (e) => {
     e.preventDefault()
-    setTraderData({ ...traderData, name: nameRef.current.value, email: emailRef.current.value, wallet: walletRef.current.value })
-    console.log(`New Data`)
+    // setTraderData({ ...traderData, name: nameRef.current.value, email: emailRef.current.value, wallet: walletRef.current.value })
+    // console.log(`New Data`)
     console.log({ name: nameRef.current.value, email: emailRef.current.value, wallet: walletRef.current.value })
     apiCall('traders#update', { trader_id: traderData.id, headers: headers, data: { trader: { name: nameRef.current.value, email: emailRef.current.value, wallet: walletRef.current.value } } }).then(response => {
       console.log(response)
@@ -29,9 +30,19 @@ function AdminPerUserDisplay() {
         setHeaders({ ...headers, 'access-token': response.headers['access-token'], 'client': response.headers['client'], 'uid': response.headers['uid'], 'expiry': response.headers['expiry'] })
       }
       setTotalData({ ...totalData, TRADERINFO: {} })
+      toast(response.data.message, { type: 'success' })
       setDisabledData(true)
       navigate(-1)
-    }).catch(error => console.log(error.response))
+    }).catch(error => {
+      console.log(error.response)
+      console.log(error.response.headers)
+      console.log(error.response.headers['access-token'])
+      toast(error.response.data.error, { type: 'error' })
+      if (error.response.headers['access-token'] !== '') {
+        console.log('Headers changed at trader update')
+        setHeaders({ ...headers, 'access-token': error.response.headers['access-token'], 'client': error.response.headers['client'], 'uid': error.response.headers['uid'], 'expiry': error.response.headers['expiry'] })
+      }
+    })
   }
   let traderInputs = [
     { label: 'Name:', type: 'text', defaultValue: traderData.name, disabled: disabledData, ref: nameRef },
