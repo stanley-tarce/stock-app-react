@@ -15,12 +15,15 @@ function MainDashboard() {
   const walletButtonRef = useRef()
   const userButtonRef = useRef()
   
-/*   const routes = useRoutes([
-    { path: '/main', element: <TraderHomeDisplay />, exact: true }])
- */
-
   const { headers, totalData, setTotalData, setHeaders } = useContext(CreateContext)
   const fetchData = Promise.all([apiCall('markets#index', { headers: headers }), apiCall('stocks#index', { headers: headers, trader_id: totalData.TRADERINFO.id }), apiCall('transactionhistories#index', { headers: headers, trader_id: totalData.TRADERINFO.id })])
+  
+  useEffect(() => {
+    location.pathname === '/main' ? homeButtonRef.current.setAttribute('fill', 'white') : homeButtonRef.current.setAttribute('fill', 'black')
+    location.pathname === '/tradermarkets' ? marketButtonRef.current.setAttribute('fill', 'white') : marketButtonRef.current.setAttribute('fill', 'black')
+    location.pathname === '/traderwallet' ? walletButtonRef.current.setAttribute('fill', 'white') : marketButtonRef.current.setAttribute('fill', 'black')
+    location.pathname === '/traderuser' || location.pathname.includes('/admin/users') ? userButtonRef.current.setAttribute('fill', 'white') : userButtonRef.current.setAttribute('fill', 'black')
+  }, [location.pathname]) 
   
   useEffect(() => {
     console.log(headers)
@@ -42,13 +45,7 @@ function MainDashboard() {
   }, [location.pathname])
 
 console.log(totalData.TRADERINFO.name)
-/*   useEffect(() => {
-    location.pathname === '/main' ? homeButtonRef.current.setAttribute('fill', 'white') : homeButtonRef.current.setAttribute('fill', 'black')
-    location.pathname === '/trader/markets' ? marketButtonRef.current.setAttribute('fill', 'white') : marketButtonRef.current.setAttribute('fill', 'black')
-    location.pathname === '/trader/wallet' ? walletButtonRef.current.setAttribute('fill', 'white') : marketButtonRef.current.setAttribute('fill', 'black')
-    location.pathname === '/trader/user' || location.pathname.includes('/admin/users') ? userButtonRef.current.setAttribute('fill', 'white') : userButtonRef.current.setAttribute('fill', 'black')
-  }, [location.pathname]) */
-  
+
 
   return (
     <div className='w-screen h-screen bg-primary-blue-light flex flex-col justify-center'>

@@ -1,14 +1,17 @@
-import React from 'react'
+import React, { useRef, useContext, useEffect } from 'react'
+/* import { CreateContext } from '../../Data/DataHooks' */
 import DashboardAds from '../../../Assets/dashboardads'
 import SearchIcon from '../../../Assets/searchicon'
 import WatchlistIcon from '../../../Assets/watchlisticon'
 function TraderHomeDisplay() {
+    /* const { totalData, setTotalData } = useContext(CreateContext) */
+
 
 return(
-        <div className='w-screen h-screen bg-primary-blue-light flex flex-col items-center justify-center gap-[10px]'>
+        <div className='w-screen h-screen bg-primary-blue-light flex flex-col items-center justify-center gap-[20px]'>
                 {/* Dashboard header */}
                 <div className=''>
-                    <h2 className='fixed top-12 left-0 p-2 font-bold text-white text-2xl'>Dashboard </h2>
+                    <h2 className='fixed top-12 left-0 p-4 font-bold text-white text-2xl'>Dashboard </h2>
                     <div><DashboardAds className='p-10'/></div>
                 </div>
 
@@ -22,12 +25,12 @@ return(
                      {/* Header */}
                     <div className='w-auto h-[60px] flex justify-start items-center gap-2 p-2'>
                         <WatchlistIcon className='px-5'/>
-                        <h2>Watchlist</h2>
+                        <h2 className=' text-white text-[20px]'>Watchlist</h2>
                     </div>
 
                     {/* Market */}
                     <div>
-
+                        
                     </div>
                 </div>
 
