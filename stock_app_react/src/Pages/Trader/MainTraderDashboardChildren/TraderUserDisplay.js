@@ -43,25 +43,6 @@ function TraderUserDisplay() {
     { label: 'Email:', type: 'text', defaultValue: TRADERINFO.email, ref: emailRef },
     { label: 'Wallet:', type: 'text', defaultValue: TRADERINFO.wallet === null ? 0 : TRADERINFO.wallet, ref: walletRef }]
 
-
-  useEffect(() => {
-    console.log(id)
-    apiCall('traders#show', { trader_id: id, headers: headers })
-      .then(response => {
-        console.log(response.data)
-        if (Object.keys(response.data).length !== 0) {
-          setTotalData({ ...totalData, TRADERINFO: { ...response.data } })
-          setTraderData({ ...traderData, ...response.data })
-        }
-        if (response.headers['access-token'] === '') {
-        }
-        else {
-          setHeaders({ ...headers, 'access-token': response.headers['access-token'], 'client': response.headers['client'], 'uid': response.headers['uid'], 'expiry': response.headers['expiry'] })
-          console.log("Headers Changed for Show Traders")
-        }
-      })
-  }, [location.pathname])
-
   useEffect(() => {
     console.log(statRef.current.innerText)
     if (statRef.current.innerText === 'pending') {
