@@ -10,8 +10,8 @@ function AdminHomeDisplay() {
   const loggedInAdmin = userData
   const navigate = useNavigate()
   // let traders = totalData.ADMINLISTOFTRADERS.filter(trader => trader.status === 'pending')
-  const [clicked, setClicked] = useState(false)
-  const [traders, setTraders] = useState(totalData.ADMINLISTOFTRADERS.filter(trader => trader.status === 'pending'))
+  // const [clicked, setClicked] = useState(false)
+  // const [traders, setTraders] = useState(totalData.ADMINLISTOFTRADERS.filter(trader => trader.status === 'pending'))
 
   const updateAccountStatus = (e, trader, status) => {
     e.preventDefault()
@@ -20,15 +20,21 @@ function AdminHomeDisplay() {
         if (response.headers['access-token'] !== '') {
           setHeaders({ ...headers, 'access-token': response.headers['access-token'], 'client': response.headers['client'], 'uid': response.headers['uid'], 'expiry': response.headers['expiry'] })
         }
-        setClicked(true)
+        // setClicked(true)
+        return apiCall('traders#index', { headers: headers }).then(response => {
+          if (response.headers['access-token'] !== '') {
+            setHeaders({ ...headers, 'access-token': response.headers['access-token'], 'client': response.headers['client'], 'uid': response.headers['uid'], 'expiry': response.headers['expiry'] })
+          }
+          setTotalData({ ...totalData, ADMINLISTOFTRADERS: [...response.data] })
+        })
       }).catch(error => { console.log(error.response) })
   }
 
   //for re-render
-  useEffect(() => {
-    setTraders(totalData.ADMINLISTOFTRADERS.filter(trader => trader.status === 'pending'))
-    console.log('render')
-  }, [clicked]);
+  // useEffect(() => {
+  //   setTraders(totalData.ADMINLISTOFTRADERS.filter(trader => trader.status === 'pending'))
+  //   console.log('render')
+  // }, [clicked]);
 
   const signOut = (e) => {
     apiCall('signout', { headers: headers })
@@ -65,7 +71,7 @@ function AdminHomeDisplay() {
 
       <div className='text-2xl w-[90%] text-white font-[400] py-2 mt-4 flex'>Pending</div>
       <section className='admin w-[90%] h-auto text-white flex flex-col overflow-y-auto'>
-        {traders.length !== 0 ? traders.map((trader, index) => {
+        {totalData.ADMINLISTOFTRADERS.length !== 0 ? totalData.ADMINLISTOFTRADERS.filter(trader => trader.status === 'pending').map((trader, index) => {
           return <div key={index} className='bg-container-light-blue text-white w-full h-36 font-[400] my-2 py-4 flex flex-col rounded-3xl justify-center'>
             <ul>
               <li className='flex'><UserIcon size={"40"} className='mx-5 inline-block' /><span className='text-xl'>{trader.name}</span></li>

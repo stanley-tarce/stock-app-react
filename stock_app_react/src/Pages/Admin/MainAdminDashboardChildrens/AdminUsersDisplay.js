@@ -7,13 +7,12 @@ function AdminUsersDisplay() {
   const { totalData, setTotalData } = useContext(CreateContext)
   const navigate = useNavigate()
   const goToUser = (e) => {
-    console.log(id)
     e.preventDefault()
     let name = e.target.innerText
     console.log("NAME")
     console.log(name)
     let id = totalData.ADMINLISTOFTRADERS.find(user => user.name.includes(name)).id
-    
+
     return navigate(`${id}`)
   }
   console.log(totalData.ADMINLISTOFTRADERS)
