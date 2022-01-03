@@ -5,7 +5,7 @@ import LogoSVG from '../Assets/logosvg'
 import EmailSVG from '../Assets/emailsvg'
 import PasswordSVG from '../Assets/passwordsvg'
 import LabelInputs from '../Components/LabelInput'
-import { apiCall, cancel } from '../Utility/Utility'
+import { apiCall } from '../Utility/Utility'
 import { toast } from 'react-hot-toast'
 export default function SignIn() {
   const navigate = useNavigate()
@@ -54,6 +54,7 @@ export default function SignIn() {
     let object = { data: data }
     apiCall('signin', object)
       .then(response => {
+        console.log(response)
         setHeaders({ 'access-token': response.headers['access-token'], 'client': response.headers['client'], 'uid': response.headers['uid'], 'expiry': response.headers['expiry'] })
         setUserData({ id: response.data.data.id, email: response.data.data.email, user_type: response.data.data.user_type, name: response.data.data.name })
         if (response.data.data.user_type === 'trader') {

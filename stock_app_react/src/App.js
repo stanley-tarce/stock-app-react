@@ -6,8 +6,10 @@ import MainDashboard from './Pages/Trader/MainTraderDashboard';
 import MainAdminDashboard from './Pages/Admin/MainAdminDashboard';
 import { AdminHomeDisplay, AdminUsersDisplay, AdminPerUserDisplay, AdminCreateTrader, AdminMarketsDisplay } from './Pages/Admin/MainAdminDashboardChildrens'
 import { Toaster } from 'react-hot-toast'
-import { TraderHomeDisplay } from './Pages/Trader/MainTraderDashboardChildren';
+import { TraderHomeDisplay, TraderUserDisplay, TraderWalletDisplay, TraderMarketDisplay } from './Pages/Trader/MainTraderDashboardChildren';
 import NewMarket from './Pages/Admin/MainAdminDashboardChildrens/NewMarket';
+// import PendingAccounts from './Components/PendingAccounts';
+
 
 function App() {
 
@@ -16,7 +18,10 @@ function App() {
     { path: '/signup', element: <Signup />, exact: true },
     {
       path: '/main', element: <MainDashboard />, children: [
-        { path: '', element: <TraderHomeDisplay /> }
+        { path: '', element: <TraderHomeDisplay /> },
+        { path: 'user', element: <TraderUserDisplay /> },
+        { path: 'markets', element: <TraderMarketDisplay /> },
+        { path: 'wallet', element: <TraderWalletDisplay /> }
       ]
     },
 
