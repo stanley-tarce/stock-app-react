@@ -1,11 +1,9 @@
 import React, { useRef, useContext, useEffect } from 'react'
-/* import { CreateContext } from '../../Data/DataHooks' */
 import DashboardAds from '../../../Assets/dashboardads'
 import SearchIcon from '../../../Assets/searchicon'
+import { CreateContext } from '../../../Data/DataHooks'
 
 function TraderHomeDisplay() {
-    /* const { totalData, setTotalData } = useContext(CreateContext) */
-
 
 return(
         <div className='w-screen h-screen bg-primary-blue-light flex flex-col items-center justify-center gap-[20px]'>

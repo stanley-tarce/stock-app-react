@@ -16,11 +16,11 @@ function MainDashboard() {
   const { headers, totalData, setTotalData, setHeaders } = useContext(CreateContext)
   const fetchData = Promise.all([apiCall('markets#index', { headers: headers }), apiCall('stocks#index', { headers: headers, trader_id: totalData.TRADERINFO.id }), apiCall('transactionhistories#index', { headers: headers, trader_id: totalData.TRADERINFO.id })])
   
-/*   useEffect(() => {
+ /*  useEffect(() => {
     location.pathname === '/main' ? homeButtonRef.current.setAttribute('fill', 'white') : homeButtonRef.current.setAttribute('fill', 'black')
     location.pathname === '/traderwallet' ? walletButtonRef.current.setAttribute('fill', 'white') : marketButtonRef.current.setAttribute('fill', 'black')
     location.pathname === '/traderuser' || location.pathname.includes('/admin/users') ? userButtonRef.current.setAttribute('fill', 'white') : userButtonRef.current.setAttribute('fill', 'black')
-  }, [location.pathname])  */
+  }, [location.pathname])  */ 
   
   useEffect(() => {
     console.log(headers)
