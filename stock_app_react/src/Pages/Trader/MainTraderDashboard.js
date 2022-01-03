@@ -5,6 +5,7 @@ import { Outlet, useNavigate, useLocation } from 'react-router-dom'
 import HomeButtonTrader from '../../Assets/homebuttontrader'
 import UserButtonTrader from '../../Assets/usertraderbutton'
 import WalletButtonTrader from '../../Assets/walletbuttontrader'
+import MarketsButtonTrader from '../../Assets/marketsbuttontrader'
 
 function MainDashboard() {
   const location = useLocation()

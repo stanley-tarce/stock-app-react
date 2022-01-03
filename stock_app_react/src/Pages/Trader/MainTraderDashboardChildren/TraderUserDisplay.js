@@ -86,7 +86,7 @@ function TraderUserDisplay() {
       {/* Profile header */}
       <div className='fixed top-[10%] w-[90%] h-auto pb-[10px] border-b-[1px] border-white flex justify-between items-center' >
         <p className='text-white text-[25px]'>Profile</p>
-        <button oonClick={(e) => signOut(e)}><SignOutIcon /></button>
+        <button onClick={(e) => signOut(e)}><SignOutIcon /></button>
       </div>
 
       <UserIcon className={"w-auto h-auto p-[40px]"} size={'130'} />
