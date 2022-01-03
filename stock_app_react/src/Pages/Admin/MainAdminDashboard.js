@@ -32,6 +32,8 @@ function MainAdminDashboard() {
         setHeaders({ ...headers, 'access-token': traders.headers['access-token'], 'client': traders.headers['client'], 'uid': traders.headers['uid'], 'expiry': traders.headers['expiry'] })
         console.log("Headers Changed for Traders")
       }
+    }).catch(error => {
+      console.log(error[0].response)
     })
   }, [location.pathname])
   return (

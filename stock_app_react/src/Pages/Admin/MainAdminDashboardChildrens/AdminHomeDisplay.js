@@ -1,12 +1,12 @@
 import React, { useContext, useState, useEffect } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { CreateContext } from '../../../Data/DataHooks'
 import UserIcon from '../../../Assets/usericon'
 import { apiCall } from '../../../Utility/Utility'
 
 function AdminHomeDisplay() {
 
-  const { headers, setHeaders, userData, totalData } = useContext(CreateContext)
+  const { headers, setHeaders, userData, totalData, setTotalData, setUserData } = useContext(CreateContext)
   const loggedInAdmin = userData
   const navigate = useNavigate()
   // let traders = totalData.ADMINLISTOFTRADERS.filter(trader => trader.status === 'pending')
@@ -33,6 +33,19 @@ function AdminHomeDisplay() {
   const signOut = (e) => {
     apiCall('signout', { headers: headers })
       .then(response => {
+        console.log(response)
+        setTotalData({
+          TRADERINFO: {},
+          TRADERSTOCKS: [],
+          TRADERTRANSACTIONS: [],
+          ADMININFO: {},
+          ADMINLISTOFTRADERS: [],
+          ADMINLISTS: [],
+          ADMINSHOWTRADER: {},
+          MARKETS: [],
+          MARKETINFO: {},
+        })
+        setUserData({})
         setHeaders({ 'access-token': '', 'client': '', 'uid': '', 'expiry': '' })
         navigate('/')
       }

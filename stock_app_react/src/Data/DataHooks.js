@@ -1,5 +1,9 @@
+import axios from 'axios'
+
 import React, { useState, createContext } from 'react'
+const source = axios.CancelToken.source()
 export const CreateContext = createContext()
+
 export default function DataHooks({ children }) {
   const [headers, setHeaders] = useState({
     'access-token': '',
@@ -24,6 +28,7 @@ export default function DataHooks({ children }) {
   const [signUpEmailState, setSignUpEmailState] = useState(false)
   const [signUpPasswordState, setSignUpPasswordState] = useState(false)
   const [signUpConfirmPasswordState, setConfirmSignUpPasswordState] = useState(false)
+  const [signUpNameState, setSignUpNameState] = useState(false)
 
 
 
@@ -47,7 +52,10 @@ export default function DataHooks({ children }) {
     userData,
     setUserData,
     totalData,
-    setTotalData
+    setTotalData,
+    signUpNameState,
+    setSignUpNameState,
+
   }
   return (
     <CreateContext.Provider value={context}>

@@ -5,7 +5,7 @@ import LogoSVG from '../Assets/logosvg'
 import EmailSVG from '../Assets/emailsvg'
 import PasswordSVG from '../Assets/passwordsvg'
 import LabelInputs from '../Components/LabelInput'
-import { apiCall } from '../Utility/Utility'
+import { apiCall, cancel } from '../Utility/Utility'
 import { toast } from 'react-hot-toast'
 export default function SignIn() {
   const navigate = useNavigate()
@@ -20,7 +20,7 @@ export default function SignIn() {
     setHeaders,
     setUserData,
     totalData,
-    setTotalData
+    setTotalData,
   } = useContext(CreateContext)
 
   const inputs = [

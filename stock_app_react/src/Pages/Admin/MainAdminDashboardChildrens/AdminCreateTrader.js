@@ -1,7 +1,8 @@
-import React, { useRef, useState, useContext } from 'react'
+import React, { useRef, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { CreateContext } from '../../../Data/DataHooks'
 import { apiCall } from '../../../Utility/Utility'
+import toast from 'react-hot-toast'
 function AdminCreateTrader() {
   const navigate = useNavigate()
   const nameRef = useRef()
@@ -19,7 +20,15 @@ function AdminCreateTrader() {
       }
       console.log(response)
       return navigate(-1)
-    }).catch(error => console.log(error.response))
+    }).catch(error => {
+      console.log(error.response)
+      if (!(error.response.headers['access-token'] === '')) {
+        setHeaders({ ...headers, 'access-token': error.response.headers['access-token'], 'client': error.response.headers['client'], 'uid': error.response.headers['uid'], 'expiry': error.response.headers['expiry'] })
+        console.log('headers change at create traders admin side')
+      }
+      console.log(error.response.data)
+      error.response.data.error.forEach(error => toast.error(error, { type: 'error' }))
+    })
   }
   const handleCancel = (e) => {
     e.preventDefault()
@@ -28,22 +37,20 @@ function AdminCreateTrader() {
     passwordRef.current.value = ''
     passwordConfirmRef.current.value = ''
     walletRef.current.value = ''
+    toast("Registration Cancelled", { type: "success" })
     navigate(-1)
   }
-  const { headers, setHeaders, totalData, setTotalData } = useContext(CreateContext)
+  const { headers, setHeaders, totalData } = useContext(CreateContext)
   let inputForms = [
     { label: "Name:", type: "text", ref: nameRef, placeholder: "Juan Dela Cruz" }, {
       label: "Email:",
       type: "email",
       ref: emailRef,
       placeholder: "juandelacruz@gmail.com"
-
     }, {
       label: "Password:",
       type: "password",
       ref: passwordRef,
-
-
     }, {
       label: "Confirm Password:",
       type: "password",

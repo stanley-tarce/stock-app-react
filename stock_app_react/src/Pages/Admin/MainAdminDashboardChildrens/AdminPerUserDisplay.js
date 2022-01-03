@@ -84,6 +84,7 @@ function AdminPerUserDisplay() {
           console.log('Headers changed at trader status')
           setHeaders({ ...headers, 'access-token': response.headers['access-token'], 'client': response.headers['client'], 'uid': response.headers['uid'], 'expiry': response.headers['expiry'] })
         }
+        toast("Trader status updated", { type: 'success' })
         return navigate(-1)
       }).catch(error => { console.log(error.response) })
   }
@@ -92,9 +93,10 @@ function AdminPerUserDisplay() {
     apiCall('traders#show', { trader_id: id, headers: headers })
       .then(response => {
         console.log(response.data)
-        setTotalData({ ...totalData, ADMINSHOWTRADER: { ...response.data } })
-        setTraderData({ ...traderData, ...response.data })
-
+        if (Object.keys(response.data).length !== 0) {
+          setTotalData({ ...totalData, ADMINSHOWTRADER: { ...response.data } })
+          setTraderData({ ...traderData, ...response.data })
+        }
         if (response.headers['access-token'] === '') {
         }
         else {

@@ -19,6 +19,7 @@ module.exports = {
         "container-light-blue": "rgba(34, 83, 131, 0.86)",
         "button-color-blue-light": "#225383"
 
+
       }
     },
   },

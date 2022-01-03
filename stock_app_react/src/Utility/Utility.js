@@ -1,7 +1,7 @@
 import axios from 'axios'
-
 export const apiCall = (method, object) => {
     const API_DOMAIN = 'https://avionstockapp.herokuapp.com'
+
     switch (method) {
         case 'signin':
             return axios.post(`${API_DOMAIN}/api/v1/auth/sign_in`, object.data)
@@ -18,7 +18,7 @@ export const apiCall = (method, object) => {
         case 'transactionhistories#index': //Used in Maindashboard.js
             return axios.get(`${API_DOMAIN}/api/v1/traders/transaction_histories`, { headers: object.headers })
         case 'markets#index': //Used in Maindashboard.js
-            return axios.get(`${API_DOMAIN}/api/v1/markets`, { headers: object.headers })
+            return axios.get(`${API_DOMAIN}/api/v1/markets`, { headers: object.headers, })
         case 'stocks#create':
             return axios.post(`${API_DOMAIN}/api/v1/traders/${object.trader_id}/stocks`, object.data, { headers: object.headers })
         case 'stocks#buy_update':
@@ -29,6 +29,8 @@ export const apiCall = (method, object) => {
             return axios.patch(`${API_DOMAIN}/api/v1/traders/${object.trader_id}/cash_in`, object.data, { headers: object.headers })
         case 'traders#cash_out':
             return axios.patch(`${API_DOMAIN}/api/v1/traders/${object.trader_id}/cash_out`, object.data, { headers: object.headers })
+        case 'traders#create':
+            return axios.post(`${API_DOMAIN}/api/v1/traders`, object.data)
         case 'traders#delete':
             return axios.delete(`${API_DOMAIN}/api/v1/traders/${object.trader_id}`, { headers: object.headers })
         case 'admins#index':
