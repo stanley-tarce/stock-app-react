@@ -1,4 +1,5 @@
 import { useRef, useContext } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { CreateContext } from '../Data/DataHooks'
 import LogoSVG from '../Assets/logosvg'
 import EmailSVG from '../Assets/emailsvg'
@@ -16,6 +17,8 @@ function Signup() {
     const confirmPasswordRef = useRef('')
 
     const {
+        signUpNameState,
+        setSignUpNameState,
         signUpEmailState,
         setSignUpEmailState,
         signUpPasswordState,
@@ -25,6 +28,8 @@ function Signup() {
         signUpNameState,
         setSignUpNameState
     } = useContext(CreateContext)
+
+    const navigate = useNavigate
 
     const inputs = [
         {
@@ -36,6 +41,14 @@ function Signup() {
 
             ref: nameRef,
 
+        },
+        {
+            svg: <EmailSVG />,
+            label: 'name',
+            type: 'name',
+            state: signUpNameState,
+            setState: setSignUpNameState,
+            ref: { ...register("name", { required: "Name is required", message: "Please enter a valid email address." }) }
         },
         {
             svg: <EmailSVG />,
@@ -82,6 +95,9 @@ function Signup() {
             errors.forEach(error => toast(error, { type: 'error' }))
         })
     }
+
+    navigate('/main')
+
 
     return (
         <div className="w-screen h-screen bg-primary-blue-light flex flex-col items-center justify-center gap-[40px]">
