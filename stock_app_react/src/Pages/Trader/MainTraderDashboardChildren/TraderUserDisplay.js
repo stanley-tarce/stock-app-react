@@ -3,6 +3,7 @@ import { CreateContext } from '../../../Data/DataHooks'
 import { useParams, useLocation, useNavigate, Navigate } from 'react-router-dom'
 import { apiCall } from '../../../Utility/Utility'
 import UserIcon from '../../../Assets/usericon'
+import SignOutIcon from '../../../Assets/signouticon'
 
 
 function TraderUserDisplay() {
@@ -59,12 +60,33 @@ function TraderUserDisplay() {
     }
   }, [traderData, setTraderData])
 
+  const signOut = (e) => {
+    apiCall('signout', { headers: headers })
+      .then(response => {
+        console.log(response)
+        setTotalData({
+          TRADERINFO: {},
+          TRADERSTOCKS: [],
+          TRADERTRANSACTIONS: [],
+          ADMININFO: {},
+          ADMINLISTOFTRADERS: [],
+          ADMINLISTS: [],
+          ADMINSHOWTRADER: {},
+          MARKETS: [],
+          MARKETINFO: {},
+        })
+        setHeaders({ 'access-token': '', 'client': '', 'uid': '', 'expiry': '' })
+        navigate('/')
+      }
+      )
+  }
 
   return (
     <div className='w-full h-full flex flex-col justify-center items-center gap-2'>
         {/* Profile header */}
         <div className='fixed top-[10%] w-[90%] h-auto pb-[10px] border-b-[1px] border-white flex justify-between items-center' >
             <p className='text-white text-[25px]'>Profile</p>
+            <button oonClick={(e) => signOut(e)}><SignOutIcon /></button>
         </div>
         
         <UserIcon className={"w-auto h-auto p-[40px]"} size={'130'} />
