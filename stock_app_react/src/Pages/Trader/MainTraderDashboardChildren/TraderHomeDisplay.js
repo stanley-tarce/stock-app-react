@@ -20,12 +20,11 @@ return(
                     <SearchIcon className='px-5'/><input className='w-[90%] h-[95%] bg-transparent outline-none text-white text-[20px]' placeholder='Search Stock'></input>
                 </div>
 
-                {/* Watchlist */}
+                {/* Market */}
                 <div>
                      {/* Header */}
                     <div className='w-auto h-[60px] flex justify-start items-center gap-2 p-2'>
-                        <WatchlistIcon className='px-5'/>
-                        <h2 className=' text-white text-[20px]'>Watchlist</h2>
+                        <h2 className=' text-white text-[20px]'>Market</h2>
                     </div>
 
                     {/* Market */}

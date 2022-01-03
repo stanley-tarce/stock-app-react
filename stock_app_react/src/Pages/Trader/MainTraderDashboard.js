@@ -52,7 +52,6 @@ console.log(totalData.TRADERINFO.name)
     <div className='w-full h-[calc(100%-70px)]'><Outlet /></div>
     <div className='w-full h-[70px] flex justify-between items-center bg-primary-navbar-color-blue '>
       <div className='w-1/3 h-full flex justify-center items-center text-white' onClick={() => navigate('')}><HomeButtonTrader fill={"black"} ref={homeButtonRef} /></div>
-      <div className='w-1/3 h-full flex justify-center items-center text-white' onClick={() => navigate('/tradermarkets')}><MarketsButtonTrader fill={"black"} ref={marketButtonRef} /></div>
       <div className='w-1/3 h-full flex justify-center items-center text-white' onClick={() => navigate('/traderwallet')}><WalletButtonTrader fill={"black"} ref={walletButtonRef} /></div>
       <div className='w-1/3 h-full flex justify-center items-center text-white' onClick={() => navigate('/traderuser')}><UserButtonTrader fill={"black"} ref={userButtonRef} /></div>
     </div>
