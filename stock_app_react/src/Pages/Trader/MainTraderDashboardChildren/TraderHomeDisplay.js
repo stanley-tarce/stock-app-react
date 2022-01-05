@@ -6,16 +6,12 @@ import { CreateContext } from '../../../Data/DataHooks'
 function TraderHomeDisplay() {
 
     return (
-        <div className='w-full h-full bg-primary-blue-light flex flex-col items-center justify-center gap-[20px]'>
+        <div className='w-full h-full bg-primary-blue-light flex flex-col items-center justify-start gap-[20px]'>
             {/* Dashboard header */}
-            <div className='w-[90%] h-auto pb-[10px] flex justify-between items-center'>
-                <div className='fixed top-[10%] w-[90%] h-auto pb-[10px] border-b-[1px] border-white flex justify-between items-center' >
-                    <h2 className='text-white text-[25px]'>Dashboard </h2>
-                </div>
-                <div  >
-                    <DashboardAds className='p-3' />
-                </div>
-            </div>
+            <p className='w-[90%] text-white h-auto text-2xl  mt-10 border-white mb-[20px]'>Dashboard</p>
+
+            <DashboardAds className='w-[90%] h-auto flex justify-between items-center p-1' />
+
 
             {/* Deposit and Withdraw */}
             <div className='w-auto h-[60px] bg-container-light-blue rounded-[20px] flex justify-start items-center gap-2 p-2'>

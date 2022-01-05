@@ -8,9 +8,8 @@ function AdminMarketsDisplay() {
   const { totalData, userData, headers, setHeaders, } = useContext(CreateContext)
   const navigate = useNavigate()
   const markets = totalData.MARKETS
-  const loggedInAdmin = userData
 
-  //   console.log(totalData.MARKETS.symbol)
+
 
   const goToMarket = (e) => {
     e.preventDefault()
