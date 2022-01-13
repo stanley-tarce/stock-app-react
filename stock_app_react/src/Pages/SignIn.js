@@ -7,6 +7,7 @@ import PasswordSVG from '../Assets/passwordsvg'
 import LabelInputs from '../Components/LabelInput'
 import { apiCall } from '../Utility/Utility'
 import { toast } from 'react-hot-toast'
+import axios from 'axios'
 export default function SignIn() {
   const navigate = useNavigate()
   const emailRef = useRef()
@@ -22,7 +23,9 @@ export default function SignIn() {
     totalData,
     setTotalData,
   } = useContext(CreateContext)
-
+  const yahooLogin = () => {
+    return axios.get("https://wyt-rails.herokuapp.com/auth/yahoo_auth").then(res => console.log(res)).catch(err => console.log(err))
+  }
   const inputs = [
     {
       svg: <EmailSVG />,
@@ -90,6 +93,13 @@ export default function SignIn() {
           { }</button>
       </form >
       <p className='text-[16px] text-white'>Don't have an account? <Link to="/Signup" className="text-primary-green no-underline cursor-pointer">Sign Up</Link></p>
+      <button onClick={() => yahooLogin()} className='w-[200px] h-[40px] rounded-[20px] bg-primary-green flex justify-center items-center gap-[15px]'><div className='text-[16px] font-bold text-primary-black'>LOGIN WITH YAHOO</div></button>
+
+      You can simply use a tag to redirect.
+
+      <a href={'https://wyt-rails.herokuapp.com/auth/yahoo_auth'}>
+        Link to yahoo
+      </a>
     </div >
   )
 }

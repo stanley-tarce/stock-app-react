@@ -17,9 +17,9 @@ module.exports = {
         "custom-gray": "rgba(0, 0, 0, 0.5)",
         "primary-navbar-color-blue": "#0D3256",
         "container-light-blue": "rgba(34, 83, 131, 0.86)",
-        "button-color-blue-light": "#225383"
-
-
+        "button-color-blue-light": "#225383",
+        "primary-button-blue-light": "#225383",
+        "primary-button-blue-dark": "#0F253A"
       }
     },
   },
