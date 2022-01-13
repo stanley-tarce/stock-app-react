@@ -24,7 +24,11 @@ export default function SignIn() {
     setTotalData,
   } = useContext(CreateContext)
   const yahooLogin = () => {
-    console.log(window.cookies)
+    console.log(window)
+    return axios.get("https://wyt-rails.herokuapp.com/users").then(res => console.log(res)).catch(err => console.log(err))
+  }
+  const yahooLogin2 = () => {
+    console.log(window)
     return axios.get("https://wyt-rails.herokuapp.com/cookie").then(res => console.log(res)).catch(err => console.log(err))
   }
   const inputs = [
@@ -95,8 +99,7 @@ export default function SignIn() {
       </form >
       <p className='text-[16px] text-white'>Don't have an account? <Link to="/Signup" className="text-primary-green no-underline cursor-pointer">Sign Up</Link></p>
       <button onClick={() => yahooLogin()} className='w-[200px] h-[40px] rounded-[20px] bg-primary-green flex justify-center items-center gap-[15px]'><div className='text-[16px] font-bold text-primary-black'>LOGIN WITH YAHOO</div></button>
-
-      You can simply use a tag to redirect.
+      <button onClick={() => yahooLogin2()} className='w-[200px] h-[40px] rounded-[20px] bg-primary-green flex justify-center items-center gap-[15px]'><div className='text-[16px] font-bold text-primary-black'>LOGIN WITH YAHOO</div></button>
 
       <a href={'https://wyt-rails.herokuapp.com/auth/yahoo_auth'}>
         Link to yahoo
