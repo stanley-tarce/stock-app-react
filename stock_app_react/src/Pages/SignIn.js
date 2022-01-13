@@ -24,7 +24,8 @@ export default function SignIn() {
     setTotalData,
   } = useContext(CreateContext)
   const yahooLogin = () => {
-    return axios.get("https://wyt-rails.herokuapp.com/users").then(res => console.log(res)).catch(err => console.log(err))
+    console.log(window.cookies)
+    return axios.get("https://wyt-rails.herokuapp.com/cookie").then(res => console.log(res)).catch(err => console.log(err))
   }
   const inputs = [
     {
