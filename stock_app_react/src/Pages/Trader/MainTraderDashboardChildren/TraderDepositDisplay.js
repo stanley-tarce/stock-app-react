@@ -40,6 +40,8 @@ function TraderDepositDisplay() {
     })
   }
 
+  // handleSubmit function for deposit btn, traders update
+
   return (
     <div className='w-screen h-full bg-primary-blue-light flex flex-col items-center gap-[15px]'>
         <p className='w-[90%] text-white h-auto text-2xl mt-10 border-white'>Wallet</p>
