@@ -6,7 +6,7 @@ function TraderStocks() {
     const { TRADERSTOCKS } = totalData
     return (
         <div className='w-auto h-auto flex flex-col justify-start items-center '>
-
+        
             <div className='w-full h-auto flex flex-col justify-start items-center gap-3'>
                 {TRADERSTOCKS && TRADERSTOCKS.map((stock, index) => {
                     const { symbol, shares, logo, price_per_unit } = stock

@@ -7,6 +7,7 @@ import { Outlet, useNavigate, useLocation } from 'react-router-dom'
 
 function TraderWalletDisplay() {
   const assetsRef = useRef(null)
+  const navigate = useNavigate()
   const transactionRef = useRef(null)
   const location = useLocation()
   const { totalData, setTotalData } = useContext(CreateContext)
@@ -18,6 +19,8 @@ function TraderWalletDisplay() {
     location.pathname === '/main/wallet' ? assetsRef.current.className += ' bg-primary-button-blue-dark z-10' : assetsRef.current.className += ' bg-blue-400'
     location.pathname === '/main/wallet/transactions' ? transactionRef.current.className += ' bg-primary-button-blue-dark z-10' : transactionRef.current.className += ' bg-blue-400'
   }, [location.pathname])
+
+  
   return (
     <div className='w-full h-full bg-primary-blue-light flex flex-col items-center justify-start gap-[15px]'>
       {/* Wallet header */}
@@ -41,7 +44,7 @@ function TraderWalletDisplay() {
         <SearchIcon className='px-5' /><input className='w-[90%] h-[95%] bg-transparent outline-none text-white text-[20px]' placeholder='Search Stock'></input>
       </div> */}
       <div className='w-[90%] h-auto flex justify-around items-center px-5 text-white relative z-10'>
-        <button className='w-auto h-auto px-6 py-3 rounded-[20px] bg-primary-green cursor-pointer'>Deposit</button>
+        <button className='w-auto h-auto px-6 py-3 rounded-[20px] bg-primary-green cursor-pointer' onClick={() => navigate('../deposit')}>Deposit</button>
         <button className='w-auto h-auto px-6 py-3 rounded-[20px] bg-primary-navbar-color-blue cursor-pointer'>Withdraw</button>
       </div>
 
