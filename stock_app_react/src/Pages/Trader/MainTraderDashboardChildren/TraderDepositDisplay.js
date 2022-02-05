@@ -15,12 +15,14 @@ function TraderDepositDisplay() {
   const { totalData, setTotalData, headers, setHeaders } = useContext(CreateContext)
   const [traderData, setTraderData] = useState({ id: '', name: '', email: '', status: '', wallet: '' })
   const [nameRef, emailRef, walletRef] = [useRef(), useRef(), useRef()]
-  const [balance, setBalance] = useState(null)
 
   const denominations = [50, 100, 200, 500, 1000, 2000]
-  const deposit = (amount) => {
-    let data = { trader: { wallet: walletRef.current.value + amount } }
-    apiCall('traders#cash_in', { trader_id: traderData.id, headers: headers, data: data }).then(response => {
+  
+  // to update tradersinfo when deposit is done
+  const handleSubmit= (e) => {
+    e.preventDefault()
+    let data = { trader: { name: nameRef.current.value, email: emailRef.current.value, wallet: walletRef.current.value }}
+    apiCall('traders#update',  { trader_id: traderData.id, headers: headers, data: data }).then(response => {
       console.log(response)
       if (response.headers['access-token'] !== '') {
         console.log('Headers changed at trader update')
@@ -40,7 +42,29 @@ function TraderDepositDisplay() {
     })
   }
 
-  // handleSubmit function for deposit btn, traders update
+  const deposit = (amount) => {
+    console.log(amount)
+    let data = { trader: { wallet: walletRef.current.value + amount } }
+    apiCall('traders#cash_in', { trader_id: traderData.id, headers: headers, data: data }).then(response => {
+      console.log(data)
+      if (response.headers['access-token'] !== '') {
+        console.log('Headers changed at trader update')
+        setHeaders({ ...headers, 'access-token': response.headers['access-token'], 'client': response.headers['client'], 'uid': response.headers['uid'], 'expiry': response.headers['expiry'] })
+      }
+      setTotalData({ ...totalData, TRADERINFO: {} })
+      // console.log(data)
+
+      toast(response.data.message, { type: 'success' })
+      setDisabledData(true)
+      navigate(-1)
+    }).catch(error => {
+      toast(error.response.data.error, { type: 'error' })
+      if (error.response.headers['access-token'] !== '') {
+        console.log('Headers changed at trader update')
+        setHeaders({ ...headers, 'access-token': error.response.headers['access-token'], 'client': error.response.headers['client'], 'uid': error.response.headers['uid'], 'expiry': error.response.headers['expiry'] })
+      }
+    })
+  }
 
   return (
     <div className='w-screen h-full bg-primary-blue-light flex flex-col items-center gap-[15px]'>
@@ -56,16 +80,11 @@ function TraderDepositDisplay() {
           </div>
         </div>
       <ul className='text-white flex grid grid-cols-3 gap-4 mt-4'>        
-        {denominations.map(denomination => {
-          const deposit = () => {
-            data: {amount: denomination}
-          }
-          return (
-            <li className='bg-container-light-blue p-4 flex justify-center'>
-              <button onClick={() => deposit(amount)}>{denomination}</button>
+        {denominations.map(denomination => (
+          <li className='bg-container-light-blue p-4 flex justify-center'>
+            <button value={denomination} onClick={amount => deposit(amount.target.value)}>${denomination}</button>
           </li>
-          )
-        })}
+        ))}
       </ul>
       <button className='text-white' onClick={(e) => handleSubmit(e)}>Deposit</button>
     </div>
