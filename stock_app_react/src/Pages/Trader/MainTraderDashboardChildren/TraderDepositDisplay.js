@@ -19,7 +19,6 @@ function TraderDepositDisplay() {
 
   const denominations = [50, 100, 200, 500, 1000, 2000]
   const deposit = (amount) => {
-    // e.preventDefault() 
     let data = { trader: { wallet: walletRef.current.value + amount } }
     apiCall('traders#cash_in', { trader_id: traderData.id, headers: headers, data: data }).then(response => {
       console.log(response)
@@ -43,7 +42,18 @@ function TraderDepositDisplay() {
 
   return (
     <div className='w-screen h-full bg-primary-blue-light flex flex-col items-center gap-[15px]'>
-      <ul className='text-white flex grid grid-cols-3 gap-4 mt-4'>
+        <p className='w-[90%] text-white h-auto text-2xl mt-10 border-white'>Wallet</p>
+        <div className='balance-walletCard w-[90%]'>
+          <WalletCard className="w-full flex z-0 max-w-[400px]" />
+          <div className='w-[90%] h-auto absolute z-[1] flex flex-col justify-start items-start bottom-[430px]'>
+            <p className='w-full h-auto text-[35px] px-5 text-white font-bold'>{`$${totalData.TRADERINFO.wallet ? totalData.TRADERINFO.wallet.toFixed(1) : 0}`}</p>
+            <div className='w-full h-auto text-[20px] flex justify-between items-center px-5 text-white'>
+              <p className='text-white font-thin'>Current Balance</p>
+              <p>{stringDate}</p>
+            </div>
+          </div>
+        </div>
+      <ul className='text-white flex grid grid-cols-3 gap-4 mt-4'>        
         {denominations.map(denomination => {
           const deposit = () => {
             data: {amount: denomination}
@@ -62,15 +72,3 @@ function TraderDepositDisplay() {
 
 export default TraderDepositDisplay
 
-
-// <p className='w-[90%] text-white h-auto text-2xl mt-10 border-white'>Wallet</p>
-// <div className='balance-walletCard w-[90%]'>
-//   <WalletCard className="w-full flex z-0 max-w-[400px]" />
-//   <div className='w-[90%] h-auto absolute z-[1] flex flex-col justify-start items-start bottom-[430px]'>
-//     <p className='w-full h-auto text-[35px] px-5 text-white font-bold'>{`$${totalData.TRADERINFO.wallet ? totalData.TRADERINFO.wallet.toFixed(1) : 0}`}</p>
-//     <div className='w-full h-auto text-[20px] flex justify-between items-center px-5 text-white'>
-//       <p className='text-white font-thin'>Current Balance</p>
-//       <p>{stringDate}</p>
-//     </div>
-//   </div>
-// </div>
