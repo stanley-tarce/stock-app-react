@@ -46,7 +46,7 @@ function TraderDepositDisplay() {
     console.log(amount)
     let data = { trader: { wallet: walletRef.current.value + amount } }
     apiCall('traders#cash_in', { trader_id: traderData.id, headers: headers, data: data }).then(response => {
-      console.log(data)
+      console.log(response)
       if (response.headers['access-token'] !== '') {
         console.log('Headers changed at trader update')
         setHeaders({ ...headers, 'access-token': response.headers['access-token'], 'client': response.headers['client'], 'uid': response.headers['uid'], 'expiry': response.headers['expiry'] })
@@ -65,7 +65,11 @@ function TraderDepositDisplay() {
       }
     })
   }
+  
+  //input is 
+  const input = () => {
 
+  }
   return (
     <div className='w-screen h-full bg-primary-blue-light flex flex-col items-center gap-[15px]'>
         <p className='w-[90%] text-white h-auto text-2xl mt-10 border-white'>Wallet</p>
@@ -81,11 +85,14 @@ function TraderDepositDisplay() {
         </div>
       <ul className='text-white flex grid grid-cols-3 gap-4 mt-4'>        
         {denominations.map(denomination => (
-          <li className='bg-container-light-blue p-4 flex justify-center'>
+          <li className='bg-container-light-blue p-4 flex justify-center rounded-lg'>
             <button value={denomination} onClick={amount => deposit(amount.target.value)}>${denomination}</button>
           </li>
         ))}
       </ul>
+      // once a denomination has been selected, it should be the input's value
+      if(deposit(amount))
+        return <input className=' w-[90%] bg-container-light-blue mt-2 p-2 text-center rounded-lg' name='amount' value={deposit(amount)} placeholder='input amount'></input>
       <button className='text-white' onClick={(e) => handleSubmit(e)}>Deposit</button>
     </div>
   )
