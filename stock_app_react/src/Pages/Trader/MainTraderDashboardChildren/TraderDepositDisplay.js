@@ -66,7 +66,7 @@ function TraderDepositDisplay() {
     })
   }
   
-  //input is 
+  //once denomination is selected it will be input's value
   const input = () => {
 
   }
@@ -83,17 +83,15 @@ function TraderDepositDisplay() {
             </div>
           </div>
         </div>
-      <ul className='text-white flex grid grid-cols-3 gap-4 mt-4'>        
+      <ul className='text-white flex grid grid-cols-3 gap-4 mt-2'>        
         {denominations.map(denomination => (
           <li className='bg-container-light-blue p-4 flex justify-center rounded-lg'>
             <button value={denomination} onClick={amount => deposit(amount.target.value)}>${denomination}</button>
           </li>
         ))}
       </ul>
-      // once a denomination has been selected, it should be the input's value
-      if(deposit(amount))
-        return <input className=' w-[90%] bg-container-light-blue mt-2 p-2 text-center rounded-lg' name='amount' value={deposit(amount)} placeholder='input amount'></input>
-      <button className='text-white' onClick={(e) => handleSubmit(e)}>Deposit</button>
+      <input className=' w-[90%] bg-container-light-blue p-2 mt-1 text-center rounded-lg' placeholder='input amount'></input>
+      <button className='text-white w-[90%] bg-primary-green mt-1 p-2 rounded-lg' onClick={(e) => handleSubmit(e)}>Deposit</button>
     </div>
   )
 }
