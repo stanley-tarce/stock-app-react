@@ -9,7 +9,6 @@ function TraderWalletDisplay() {
   const assetsRef = useRef(null)
   const navigate = useNavigate()
   const transactionRef = useRef(null)
-  const navigate = useNavigate()
   const location = useLocation()
   const { totalData, setTotalData } = useContext(CreateContext)
   const date = new Date()
