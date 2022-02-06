@@ -20,7 +20,11 @@ module.exports = {
         "button-color-blue-light": "#225383",
         "primary-button-blue-light": "#225383",
         "primary-button-blue-dark": "#0F253A"
-      }
+      },
+      fontFamily: {
+        primary: ['Poppins'],
+        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono',' Courier New', 'monospace'],
+      },
     },
   },
   plugins: [],

@@ -42,18 +42,19 @@ function TraderUserDisplay() {
   let traderInfo = [
     { label: 'Name:', type: 'text', defaultValue: TRADERINFO.name, ref: nameRef },
     { label: 'Email:', type: 'text', defaultValue: TRADERINFO.email, ref: emailRef },
-    { label: 'Wallet:', type: 'text', defaultValue: TRADERINFO.wallet === null ? 0 : TRADERINFO.wallet, ref: walletRef }]
-
+    { label: 'Wallet:', type: 'text', defaultValue: TRADERINFO.wallet === null ? 0 : TRADERINFO.wallet, ref: walletRef }
+  ]
+  // {`$${totalData.TRADERINFO.wallet ? totalData.TRADERINFO.wallet.toFixed(1) : 0}`}
   useEffect(() => {
     console.log(statRef.current.innerText)
     if (statRef.current.innerText === 'pending') {
-      statRef.current.setAttribute('class', 'py-1 px-4 bg-yellow-400 flex justify-center items-center rounded-[20px] text-[14px]')
+      statRef.current.setAttribute('class', 'py-1 px-4 bg-yellow-400 flex justify-center items-center col-span-2 ml-2 max-w-fit rounded-[20px]')
     }
     else if (statRef.current.innerText === 'approved') {
-      statRef.current.setAttribute('class', 'py-1 px-4 bg-green-400 flex justify-center items-center rounded-[20px] text-[14px]')
+      statRef.current.setAttribute('class', 'py-1 px-4 bg-green-400 flex justify-center items-center col-span-2 ml-2 max-w-fit rounded-[20px]')
     }
     else if (statRef.current.innerText === 'rejected') {
-      statRef.current.setAttribute('class', 'py-1 px-4 bg-red-400 flex justify-center items-center rounded-[20px] text-[14px]')
+      statRef.current.setAttribute('class', 'py-1 px-4 bg-red-400 flex justify-center items-center col-span-2 ml-2 max-w-fit rounded-[20px]')
     }
     else {
       console.log("No Status")
@@ -82,25 +83,31 @@ function TraderUserDisplay() {
   }
 
   return (
-    <div className='w-full h-full flex flex-col justify-center items-center gap-2'>
+    <div className='w-full h-auto mt-10 flex flex-col justify-center items-center gap-2'>
       {/* Profile header */}
-      <div className='fixed top-[10%] w-[90%] h-auto pb-[10px] border-b-[1px] border-white flex justify-between items-center' >
-        <p className='text-white text-[25px]'>Profile</p>
+      <div className='w-[90%] h-full border-b-[1px] border-button-color-blue-light p-2 flex justify-between items-center' >
+        <p className='text-white text-xl md:text-2xl font-primary '>Profile</p>
         <button onClick={(e) => signOut(e)}><SignOutIcon /></button>
       </div>
 
-      <UserIcon className={"w-auto h-auto p-[40px]"} size={'130'} />
-      {traderInfo.map(({ label, ...input }, index) =>
-        <div key={index} className='w-[90%] h-auto flex text-white text-[20px]'>
-          <label className='w-[24%] h-auto flex justify-center items-center'>{label}</label>
-          <input className='h-full text-[15px] bg-transparent outline-none w-[calc(100%-24%)] flex justify-center items-center'{...input} />
-
-        </div>)}
-
-      <div className='w-[90%] h-auto flex text-white text-[20px] gap-1'>
-        <label className='w-[24%] h-auto flex justify-center items-center'>Status:</label>
-        <p ref={statRef} >{TRADERINFO.status}</p>
+      <UserIcon className={"md:w-[250px] md:h-[250px] w-[200px] h-[200px] p-[40px]"} />
+      <div className='w-[90%] h-auto'>
+        {traderInfo.map(({ label, ...input }, index) =>
+          <div key={index} className='flex text-white mb-5 grid grid-cols-6 font-primary md:text-2xl text-base'>
+            <label className='h-auto flex col-start-1 col-end-2 justify-center items-center'>{label}</label>
+            <input className='h-full w-full col-start-2 col-end-7 bg-transparent outline-none flex justify-center items-center'{...input} />
+          </div>
+        )}
+        <div className='w-full h-auto grid grid-cols-6 text-white md:text-2xl text-base'>
+          <label className='w-full flex justify-center ml-1 items-center h-auto font-primary col-start-1 col-end-2'>Status:</label>
+          <p className='w-full bg-rose-500 'ref={statRef} >{TRADERINFO.status}</p>
+        </div>
       </div>
+
+      {/* <div className='w-[90%] h-auto flex text-white items-center justify-start text-base'>
+        <label className='h-auto font-primary mr-1 '>Status:</label>
+        <p ref={statRef} >{TRADERINFO.status}</p>
+      </div> */}
 
 
     </div>
