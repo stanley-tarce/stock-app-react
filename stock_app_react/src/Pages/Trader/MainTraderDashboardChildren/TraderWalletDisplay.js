@@ -1,6 +1,5 @@
-import React, { useContext, useEffect, useRef } from 'react'
+import React, { useContext, useRef } from 'react'
 import WalletCard from '../../../Assets/walletcardbg'
-import SearchIcon from '../../../Assets/searchicon'
 import { CreateContext } from '../../../Data/DataHooks'
 import { Outlet, useNavigate, useLocation } from 'react-router-dom'
 
@@ -10,25 +9,20 @@ function TraderWalletDisplay() {
   const navigate = useNavigate()
   const transactionRef = useRef(null)
   const location = useLocation()
-  const { totalData, setTotalData } = useContext(CreateContext)
+  const { totalData } = useContext(CreateContext)
   const date = new Date()
   const stringDate = (date.getMonth() + 1) < 10 ? `0${(date.getMonth() + 1)}/${date.getFullYear() + 2}` : `${(date.getMonth() + 1)}/${date.getFullYear()}`
 
-  useEffect(() => {
-    console.log(location.pathname)
-    // location.pathname === '/main/wallet' ? assetsRef.current.className += ' bg-primary-button-blue-dark z-10' : assetsRef.current.className += ' bg-blue-400'
-    // location.pathname === '/main/wallet/transactions' ? transactionRef.current.className += ' bg-primary-button-blue-dark z-10' : transactionRef.current.className += ' bg-blue-400'
-  })
 
   const handleButton = {
     assets: () => navigate(''),
     transactions: () => navigate('transactions')
   }
   return (
-    <div className='w-screen h-auto bg-primary-blue-light flex flex-col items-center gap-[15px]'>
-      <p className='w-[90%] text-white h-auto text-2xl mt-5 border-white'>Wallet</p>
+    <div className='w-screen h-full bg-primary-blue-light flex flex-col items-center gap-[15px]'>
+      <p className='w-[90%] text-white h-full text-2xl mt-5 border-white'>Wallet</p>
       <div className='balance-walletCard w-[90%]'>
-        <WalletCard className="w-full flex z-0 max-w-[400px]" />
+        <WalletCard className="w-full flex z-0" />
         <div className='w-[90%] h-auto absolute z-[1] flex flex-col justify-start items-start bottom-[430px]'>
           <div className='w-full h-auto text-[20px] flex justify-between items-center px-5 text-white'>
             <p className='text-white font-thin'>Current Balance</p>
@@ -45,9 +39,9 @@ function TraderWalletDisplay() {
         <p className='w-full h-auto text-[35px] px-5 text-white font-bold'>{`$${totalData.TRADERINFO.wallet ? totalData.TRADERINFO.wallet.toFixed(1) : 0}`}</p>
       </div> */}
 
-      <div className='w-[90%] h-auto flex justify-around items-center text-white relative'>
-        <button className='w-auto h-auto px-6 py-3 rounded-lg bg-primary-green cursor-pointer' onClick={() => navigate('../deposit')}>Deposit</button>
-        <button className='w-auto h-auto px-6 py-3 rounded-lg bg-primary-navbar-color-blue cursor-pointer'>Withdraw</button>
+      <div className='w-[90%] h-auto flex justify-around items-center px-5 text-white relative z-10'>
+        <button className='w-auto h-auto px-6 py-3 rounded-[20px] bg-primary-green cursor-pointer' onClick={() => navigate('../deposit')}>Deposit</button>
+        <button className='w-auto h-auto px-6 py-3 rounded-[20px] bg-primary-navbar-color-blue cursor-pointer' onClick={() => navigate('../withdraw')}>Withdraw</button>
       </div>
 
       <div>

@@ -21,13 +21,13 @@ function AdminHomeDisplay() {
           setHeaders({ ...headers, 'access-token': response.headers['access-token'], 'client': response.headers['client'], 'uid': response.headers['uid'], 'expiry': response.headers['expiry'] })
         }
         // setClicked(true)
-        return apiCall('traders#index', { headers: headers }).then(response => {
-          if (response.headers['access-token'] !== '') {
-            setHeaders({ ...headers, 'access-token': response.headers['access-token'], 'client': response.headers['client'], 'uid': response.headers['uid'], 'expiry': response.headers['expiry'] })
-          }
-          setTotalData({ ...totalData, ADMINLISTOFTRADERS: [...response.data] })
-        })
-      }).catch(error => { console.log(error.response) })
+
+      }).then(res => apiCall('traders#index', { headers: headers }).then(response => {
+        if (response.headers['access-token'] !== '') {
+          setHeaders({ ...headers, 'access-token': response.headers['access-token'], 'client': response.headers['client'], 'uid': response.headers['uid'], 'expiry': response.headers['expiry'] })
+        }
+        setTotalData({ ...totalData, ADMINLISTOFTRADERS: [...response.data] })
+      })).catch(error => { console.log(error.response) })
   }
 
   //for re-render

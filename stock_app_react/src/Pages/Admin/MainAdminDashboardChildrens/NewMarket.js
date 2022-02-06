@@ -54,7 +54,7 @@ function NewMarket() {
       <div className='w-[90%] max-w-[90%] rounded-3xl min-h-max flex items-center bg-primary-blue justify-center overflow-hidden'>
         {totalData.MARKETINFO.logo && <img width='200' height='250' src={totalData.MARKETINFO.logo.split('"')[1]} />}
       </div>
-      <div className='buttons w-full h-auto justify-evenly items-center w-[90%] flex flex-col'>
+      <div className='buttons h-auto justify-evenly items-center w-[90%] flex flex-col'>
         <button onClick={(e) => updateMarket(e)} className='bg-primary-green text-[16px] py-2 w-full mt-4 px-1 rounded-3xl'> Update market</button>
         <button onClick={(e) => updateMarket(e)} className='bg-primary-red text-[16px] py-2 w-full mt-4 px-1 rounded-3xl'> Delete market</button>
       </div>
