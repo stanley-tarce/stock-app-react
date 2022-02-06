@@ -44,7 +44,7 @@ function TraderUserDisplay() {
     { label: 'Email:', type: 'text', defaultValue: TRADERINFO.email, ref: emailRef },
     { label: 'Wallet:', type: 'text', defaultValue: TRADERINFO.wallet === null ? 0 : TRADERINFO.wallet, ref: walletRef }
   ]
-  // {`$${totalData.TRADERINFO.wallet ? totalData.TRADERINFO.wallet.toFixed(1) : 0}`}
+
   useEffect(() => {
     console.log(statRef.current.innerText)
     if (statRef.current.innerText === 'pending') {
@@ -103,13 +103,6 @@ function TraderUserDisplay() {
           <p className='w-full bg-rose-500 'ref={statRef} >{TRADERINFO.status}</p>
         </div>
       </div>
-
-      {/* <div className='w-[90%] h-auto flex text-white items-center justify-start text-base'>
-        <label className='h-auto font-primary mr-1 '>Status:</label>
-        <p ref={statRef} >{TRADERINFO.status}</p>
-      </div> */}
-
-
     </div>
   )
 }
