@@ -25,21 +25,29 @@ function TraderWalletDisplay() {
     transactions: () => navigate('transactions')
   }
   return (
-    <div className='w-full h-auto bg-primary-blue-light flex flex-col items-center justify-start gap-[15px]'>
-
-      <p className='w-[90%] text-white h-auto text-2xl  mt-10 border-white '>Wallet</p>
-      <WalletCard className="z-0 w-[90%] max-w-[400px] h-[300px]" />
-      <div className='w-[90%] h-auto absolute z-[1] flex flex-col justify-start items-center bottom-[350px]'>
+    <div className='w-screen h-auto bg-primary-blue-light flex flex-col items-center gap-[15px]'>
+      <p className='w-[90%] text-white h-auto text-2xl mt-5 border-white'>Wallet</p>
+      <div className='balance-walletCard w-[90%]'>
+        <WalletCard className="w-full flex z-0 max-w-[400px]" />
+        <div className='w-[90%] h-auto absolute z-[1] flex flex-col justify-start items-start bottom-[430px]'>
+          <div className='w-full h-auto text-[20px] flex justify-between items-center px-5 text-white'>
+            <p className='text-white font-thin'>Current Balance</p>
+            <p className='date'>{stringDate}</p>
+          </div>
+          <p className='balance w-full h-auto text-[35px] px-5 text-white font-bold'>{`$${totalData.TRADERINFO.wallet ? totalData.TRADERINFO.wallet.toFixed(1) : 0}`}</p>
+        </div>
+      </div>
+      {/* <div className='w-[90%] h-auto absolute z-[1] flex flex-col justify-start items-center bottom-[350px]'>
         <div className='w-full h-auto text-[20px] flex justify-between items-center px-5 text-white'>
           <p className='text-white font-thin'>Current Balance</p>
           <p>{stringDate}</p>
         </div>
         <p className='w-full h-auto text-[35px] px-5 text-white font-bold'>{`$${totalData.TRADERINFO.wallet ? totalData.TRADERINFO.wallet.toFixed(1) : 0}`}</p>
-      </div>
+      </div> */}
 
-      <div className='w-[90%] h-auto flex justify-around items-center px-5 text-white relative z-10'>
-        <button className='w-auto h-auto px-6 py-3 rounded-[20px] bg-primary-green cursor-pointer' onClick={() => navigate('../deposit')}>Deposit</button>
-        <button className='w-auto h-auto px-6 py-3 rounded-[20px] bg-primary-navbar-color-blue cursor-pointer'>Withdraw</button>
+      <div className='w-[90%] h-auto flex justify-around items-center text-white relative'>
+        <button className='w-auto h-auto px-6 py-3 rounded-lg bg-primary-green cursor-pointer' onClick={() => navigate('../deposit')}>Deposit</button>
+        <button className='w-auto h-auto px-6 py-3 rounded-lg bg-primary-navbar-color-blue cursor-pointer'>Withdraw</button>
       </div>
 
       <div>

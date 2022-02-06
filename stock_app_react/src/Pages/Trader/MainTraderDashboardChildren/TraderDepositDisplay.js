@@ -72,7 +72,7 @@ function TraderDepositDisplay() {
   }
   return (
     <div className='w-screen h-full bg-primary-blue-light flex flex-col items-center gap-[15px]'>
-        <p className='w-[90%] text-white h-auto text-2xl mt-10 border-white'>Wallet</p>
+        <p className='w-[90%] text-white h-auto text-2xl mt-5 border-white'>Wallet</p>
         <div className='balance-walletCard w-[90%]'>
           <WalletCard className="w-full flex z-0 max-w-[400px]" />
           <div className='w-[90%] h-auto absolute z-[1] flex flex-col justify-start items-start bottom-[430px]'>
