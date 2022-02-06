@@ -1,4 +1,4 @@
-import React, { useContext, useState, useRef } from 'react'
+import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { CreateContext } from '../../../Data/DataHooks'
 import WalletCard from '../../../Assets/walletcardbg'
@@ -6,7 +6,7 @@ import { apiCall } from '../../../Utility/Utility'
 import { toast } from 'react-hot-toast'
 import { updateHeader } from '../../../Functions/updateHeader'
 
-function TraderDepositDisplay() {
+function TraderWithdrawDisplay() {
   const navigate = useNavigate()
   const [amount, setAmount] = useState(0)
   const date = new Date()
@@ -18,7 +18,7 @@ function TraderDepositDisplay() {
   const deposit = (amount) => {
     console.log(amount)
     let data = { trader: { wallet: amount } }
-    apiCall('traders#cash_in', { headers: headers, data: data }).then(response => {
+    apiCall('traders#cash_out', { headers: headers, data: data }).then(response => {
       console.log(response)
       if (response.headers['access-token'] !== '') {
         console.log('Headers changed at trader update')
@@ -64,10 +64,10 @@ function TraderDepositDisplay() {
         ))}
       </ul>
       <input className=' w-[90%] bg-container-light-blue p-2 mt-1 text-center rounded-lg' onChange={(e) => setAmount(e.target.value)} placeholder='input amount'></input>
-      <button className='text-white w-[90%] bg-primary-green mt-1 p-2 rounded-lg' onClick={(e) => deposit(amount)}>Deposit</button>
+      <button className='text-white w-[90%] bg-primary-green mt-1 p-2 rounded-lg' onClick={(e) => deposit(amount)}>Withdraw</button>
     </div>
   )
 }
 
-export default TraderDepositDisplay
+export default TraderWithdrawDisplay
 

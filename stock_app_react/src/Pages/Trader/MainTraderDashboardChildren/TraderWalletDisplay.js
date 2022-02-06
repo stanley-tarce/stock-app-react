@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from 'react'
+import React, { useContext, useRef } from 'react'
 import WalletCard from '../../../Assets/walletcardbg'
 import SearchIcon from '../../../Assets/searchicon'
 import { CreateContext } from '../../../Data/DataHooks'
@@ -10,15 +10,10 @@ function TraderWalletDisplay() {
   const navigate = useNavigate()
   const transactionRef = useRef(null)
   const location = useLocation()
-  const { totalData, setTotalData } = useContext(CreateContext)
+  const { totalData } = useContext(CreateContext)
   const date = new Date()
   const stringDate = (date.getMonth() + 1) < 10 ? `0${(date.getMonth() + 1)}/${date.getFullYear() + 2}` : `${(date.getMonth() + 1)}/${date.getFullYear()}`
 
-  useEffect(() => {
-    console.log(location.pathname)
-    // location.pathname === '/main/wallet' ? assetsRef.current.className += ' bg-primary-button-blue-dark z-10' : assetsRef.current.className += ' bg-blue-400'
-    // location.pathname === '/main/wallet/transactions' ? transactionRef.current.className += ' bg-primary-button-blue-dark z-10' : transactionRef.current.className += ' bg-blue-400'
-  })
 
   const handleButton = {
     assets: () => navigate(''),
@@ -39,7 +34,7 @@ function TraderWalletDisplay() {
 
       <div className='w-[90%] h-auto flex justify-around items-center px-5 text-white relative z-10'>
         <button className='w-auto h-auto px-6 py-3 rounded-[20px] bg-primary-green cursor-pointer' onClick={() => navigate('../deposit')}>Deposit</button>
-        <button className='w-auto h-auto px-6 py-3 rounded-[20px] bg-primary-navbar-color-blue cursor-pointer'>Withdraw</button>
+        <button className='w-auto h-auto px-6 py-3 rounded-[20px] bg-primary-navbar-color-blue cursor-pointer' onClick={() => navigate('../withdraw')}>Withdraw</button>
       </div>
 
       <div>
