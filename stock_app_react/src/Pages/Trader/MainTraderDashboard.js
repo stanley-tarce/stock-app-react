@@ -6,6 +6,7 @@ import HomeButtonTrader from '../../Assets/homebuttontrader'
 import UserButtonTrader from '../../Assets/usertraderbutton'
 import WalletButtonTrader from '../../Assets/walletbuttontrader'
 import MarketsButtonTrader from '../../Assets/marketsbuttontrader'
+import { updateHeader } from '../../Functions/updateHeader'
 
 function MainDashboard() {
   const location = useLocation()
@@ -20,27 +21,15 @@ function MainDashboard() {
   const fetchData = Promise.all([apiCall('markets#index', { headers: headers }), apiCall('stocks#index', { headers: headers, trader_id: totalData.TRADERINFO.id }), apiCall('transactionhistories#index', { headers: headers, trader_id: totalData.TRADERINFO.id })])
 
   useEffect(() => {
-    console.log(headers)
     fetchData.then(response => {
       const [markets, stocks, transactionHistories] = response
       setTotalData({ ...totalData, MARKETS: [...markets.data], TRADERSTOCKS: [...stocks.data], TRADERTRANSACTIONS: [...transactionHistories.data] })
-
-      if (!(markets.headers['access-token'] === '')) {
-        setHeaders({ ...headers, 'access-token': markets.headers['access-token'], 'client': markets.headers['client'], 'uid': markets.headers['uid'] })
-        console.log("Headers Changed")
-      }
-      if (!(stocks.headers['access-token'] === '')) {
-        setHeaders({ ...headers, 'access-token': stocks.headers['access-token'], 'client': stocks.headers['client'], 'uid': stocks.headers['uid'] })
-        console.log("Headers Changed")
-      }
-      if (!(transactionHistories.headers['access-token'] === '')) {
-        setHeaders({ ...headers, 'access-token': transactionHistories.headers['access-token'], 'client': transactionHistories.headers['client'], 'uid': transactionHistories.headers['uid'] })
-        console.log("Headers Changed")
-      }
+      updateHeader(markets, headers, setHeaders)
+      updateHeader(stocks, headers, setHeaders)
+      updateHeader(transactionHistories, headers, setHeaders)
     })
   }, [location.pathname])
 
-  console.log(totalData.TRADERINFO.name)
   useEffect(() => {
     location.pathname === '/main' ? homeButtonRef2.current.setAttribute('fill', 'white') : homeButtonRef2.current.setAttribute('fill', '#0F253A')
     location.pathname === '/main/markets' ? marketButtonRef2.current.setAttribute('fill', 'white') : marketButtonRef2.current.setAttribute('fill', '#0F253A')
@@ -52,7 +41,7 @@ function MainDashboard() {
   return (
     <div className='w-screen h-screen bg-primary-blue-light flex flex-col justify-center'>
       <div className='w-full h-[calc(100%-70px)]'><Outlet /></div>
-      <div className='relative z-10 w-full h-[70px] flex justify-between items-center bg-primary-navbar-color-blue '>
+      <div className='fixed bottom-0 z-10 w-full h-[70px] flex justify-between items-center bg-primary-navbar-color-blue '>
         <div className='w-1/4 h-full flex justify-center items-center text-white' onClick={() => navigate('')}><HomeButtonTrader fill={"black"} ref={homeButtonRef2} /></div>
         <div className='w-1/4 h-full flex justify-center items-center text-white' onClick={() => navigate('markets')}><MarketsButtonTrader fill={"black"} ref={marketButtonRef2} /></div>
         <div className='w-1/4 h-full flex justify-center items-center text-white' onClick={() => navigate('wallet')}><WalletButtonTrader fill={"black"} ref={walletButtonRef2} /></div>
