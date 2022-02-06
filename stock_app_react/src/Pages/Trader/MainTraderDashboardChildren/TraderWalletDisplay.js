@@ -7,6 +7,7 @@ import { Outlet, useNavigate, useLocation } from 'react-router-dom'
 
 function TraderWalletDisplay() {
   const assetsRef = useRef(null)
+  const navigate = useNavigate()
   const transactionRef = useRef(null)
   const navigate = useNavigate()
   const location = useLocation()
@@ -38,7 +39,7 @@ function TraderWalletDisplay() {
       </div>
 
       <div className='w-[90%] h-auto flex justify-around items-center px-5 text-white relative z-10'>
-        <button className='w-auto h-auto px-6 py-3 rounded-[20px] bg-primary-green cursor-pointer'>Deposit</button>
+        <button className='w-auto h-auto px-6 py-3 rounded-[20px] bg-primary-green cursor-pointer' onClick={() => navigate('../deposit')}>Deposit</button>
         <button className='w-auto h-auto px-6 py-3 rounded-[20px] bg-primary-navbar-color-blue cursor-pointer'>Withdraw</button>
       </div>
 
