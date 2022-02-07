@@ -36,7 +36,7 @@ function TraderHomeDisplay() {
                         const goToMarket = () => {
                             navigate(`/main/markets/${market.id}`)
                         }
-                        return <div key={index} className='w-full min-h-[15%] lg:min-h-[25%] flex text-base xl:text-2xl md:text-xl justify-between items-center bg-container-light-blue rounded-lg hover:bg-blue-400 p-2 cursor-pointer' onClick={goToMarket}>
+                        return <div key={index} className='w-full min-h-[55px] lg:min-h-[60px] flex text-base xl:text-2xl md:text-xl justify-between items-center bg-container-light-blue rounded-lg hover:bg-blue-400 p-2 cursor-pointer' onClick={goToMarket}>
                             <span className='w-[50%] flex pointer-events-none items-center justify-start text-left'>
                                 <img className="rounded-full object-cover pointer-events-none" width="40" height="40" src={market.logo.split('"')[1]} />
                                 <p className=' text-left pl-4 pointer-events-none'>{market.symbol}</p>
