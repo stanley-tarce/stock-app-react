@@ -13,14 +13,14 @@ function TraderHomeDisplay() {
             {/* Dashboard header */}
             <p className='w-[90%] h-fit mt-5 text-white text-xl font-primary lg:mt-20 py-[1%]  xl:text-2xl'>Dashboard</p>
 
-            <div className='h-[30%] w-[90%] md:bg-primary-blue rounded-xl flex justify-center'>
+            <div className='h-[30%] w-[90%] md:bg-primary-blue rounded-lg flex mt-4 justify-center'>
                 <div className='for-padding md:flex justify-center items-center md:py-4 lg:py-6'>
                     <DashboardAds className='w-[90%] h-full flex justify-between items-center' />
                 </div>
             </div>
 
             {/* Deposit and Withdraw */}
-            <div className='w-[90%] h-[10%] mt-4 border-2 border-container-light-blue rounded-[20px] flex justify-start items-center gap-2 p-2 lg:p-4'>
+            <div className='w-[90%] h-[10%] mt-4 border-2 border-container-light-blue rounded-lg flex justify-start items-center gap-2 p-2 lg:p-4'>
                 <SearchIcon className={"w-[30px] h-[30px]  text-text-gray"} /><input onChange={(e) => setSearch(e.target.value)} className=' xl:text-2xl lg:text-xl bg-transparent outline-none text-white text-base' placeholder='Search Stock'></input>
             </div>
 
