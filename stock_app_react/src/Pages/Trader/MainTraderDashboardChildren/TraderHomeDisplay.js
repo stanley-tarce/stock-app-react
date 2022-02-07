@@ -11,11 +11,11 @@ function TraderHomeDisplay() {
     return (
         <div className='w-full h-full flex flex-col justify-center items-center'>
             {/* Dashboard header */}
-            <p className='w-[90%] h-fit lg:mt-20 mt-5 text-white text-xl md:text-2xl font-primary mb-[15px]'>Dashboard</p>
+            <p className='w-[90%] h-fit mt-5 text-white text-xl font-primary lg:mt-20 py-[1%]  xl:text-2xl'>Dashboard</p>
 
-            <div className=' h-[30%] w-[90%] md:bg-primary-blue rounded-xl flex justify-center'>
-                <div className='for-padding md:flex justify-center items-center md:py-4'>
-                    <DashboardAds className='w-[90%] h-autoflex justify-between items-center' />
+            <div className='h-[30%] w-[90%] md:bg-primary-blue rounded-xl flex justify-center'>
+                <div className='for-padding md:flex justify-center items-center md:py-4 lg:py-6'>
+                    <DashboardAds className='w-[90%] h-full flex justify-between items-center' />
                 </div>
             </div>
 
@@ -27,8 +27,8 @@ function TraderHomeDisplay() {
             {/* Market */}
             <div className='w-full h-[60%] flex flex-col items-center mt-2 justify-start'>
                 {/* Header */}
-                <div className='w-[90%] h-fit flex justify-start items-center my-1'>
-                    <h2 className=' text-white text-lg flex font-primary md:text-2xl'>Top Markets</h2>
+                <div className='w-[90%] h-fit flex justify-start items-center my-1 md:my-4'>
+                    <h2 className=' text-white text-lg flex font-primary md:text-xl'>Top Markets</h2>
                 </div>
                 {/* Market */}
                 <div className='w-[90%] h-auto overflow-y-auto text-white overflow-scroll flex mt-2 flex-col gap-4'>
