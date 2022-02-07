@@ -40,9 +40,9 @@ function MainDashboard() {
 
 
   return (
-    <div className='w-screen h-screen bg-primary-blue-light flex flex-col justify-center'>
-      <div className='w-full h-full'><Outlet /></div>
-      <div className='fixed bottom-0 z-10 w-full h-[calc(100%-90%)] flex justify-between items-center bg-container-light-blue '>
+    <div className='w-screen h-screen overscroll-none bg-primary-blue-light overflow-hidden flex flex-col justify-center'>
+      <div className='w-full h-[calc(90%)] overscroll-none overflow-hidden'><Outlet /></div>
+      <div className='fixed bottom-0 z-10 w-full h-[10%] flex justify-between items-center bg-container-light-blue '>
         <div className='w-1/4 h-full flex justify-center items-center text-white' onClick={() => navigate('')}><HomeButtonTrader fill={"black"} ref={homeButtonRef2} /></div>
         <div className='w-1/4 h-full flex justify-center items-center text-white' onClick={() => navigate('markets')}><MarketsButtonTrader fill={"black"} ref={marketButtonRef2} /></div>
         <div className='w-1/4 h-full flex justify-center items-center text-white' onClick={() => navigate('wallet')}><WalletButtonTrader fill={"black"} ref={walletButtonRef2} /></div>

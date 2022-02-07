@@ -84,14 +84,14 @@ function TraderUserDisplay() {
   }
 
   return (
-    <div className='w-full h-auto mt-3 flex flex-col justify-center items-center'>
+    <div className='w-full h-auto flex flex-col justify-center  items-center'>
       {/* Profile header */}
-      <div className='w-[90%] h-full border-b-[1px] border-button-color-blue-light p-2 flex justify-between items-center' >
+      <div className='w-[90%] h-full mt-5 border-b-[1px] border-button-color-blue-light p-2 flex justify-between items-center' >
         <h2 className='text-white text-xl md:text-2xl font-primary'>Profile</h2>
         <button onClick={(e) => signOut(e)}><SignOutIcon /></button>
       </div>
 
-      <UserIcon className={"md:w-[250px] md:h-[250px] w-[200px] h-[200px] p-[40px]"} />
+      <UserIcon className={"md:w-[250px] md:h-[250px] lg:w-[200px] lg:h-[200px] w-[200px] h-[200px] p-[40px]"} />
       <div className='w-[90%] h-auto'>
         {traderInfo.map(({ label, ...input }, index) =>
           <div key={index} className='flex text-white mb-5 grid grid-cols-6 font-primary md:text-2xl text-base'>
