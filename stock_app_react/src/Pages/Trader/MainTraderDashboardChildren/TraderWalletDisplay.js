@@ -20,9 +20,9 @@ function TraderWalletDisplay() {
   }
   return (
     <div className='w-screen h-screen bg-primary-blue-light flex flex-col items-center gap-[15px]'>
-      <p className='w-[90%] text-white h-full text-2xl mt-5 border-white'>Wallet</p>
+      <p className='w-[90%] text-white h-auto text-xl md:text-2xl mt-5 border-white'>Wallet</p>
       <div className='balance-walletCard w-[90%]'>
-        <WalletCard className="w-full flex z-0" />
+        <WalletCard className="w-full h-[200px] flex z-0" />
         <div className='w-[90%] h-auto absolute z-[1] flex flex-col justify-start items-start bottom-[430px]'>
           <div className='w-full h-auto text-[20px] flex justify-between items-center px-5 text-white'>
             <p className='text-white font-thin'>Current Balance</p>
@@ -39,7 +39,7 @@ function TraderWalletDisplay() {
         <p className='w-full h-auto text-[35px] px-5 text-white font-bold'>{`$${totalData.TRADERINFO.wallet ? totalData.TRADERINFO.wallet.toFixed(1) : 0}`}</p>
       </div> */}
 
-      <div className='w-[90%] h-full flex justify-around items-center px-5 text-white relative z-10'>
+      <div className='w-[90%] h-auto flex justify-around items-center px-5 text-white relative z-10'>
         <button className='w-auto h-auto px-6 py-3 rounded-[20px] bg-primary-green cursor-pointer' onClick={() => navigate('../deposit')}>Deposit</button>
         <button className='w-auto h-auto px-6 py-3 rounded-[20px] bg-primary-navbar-color-blue cursor-pointer' onClick={() => navigate('../withdraw')}>Withdraw</button>
       </div>
@@ -51,16 +51,16 @@ function TraderWalletDisplay() {
             } `} >Transaction</button>
         </div>
       </div>
-      {location.pathname === '/main/wallet' ? <div className='w-[90%] h-full flex justify-center items-center'>
+      {location.pathname === '/main/wallet' ? <div className='w-[90%] h-auto flex justify-center items-center'>
         <p className='w-1/3 h-auto flex items-center  justify-center text-[15px] text-white'>STOCK</p>
         <p className='w-1/3 h-auto flex items-center  justify-center text-[15px] text-white'>PRICE</p>
         <p className='w-1/3 h-auto flex items-center  justify-center text-[15px] text-white'>UNIT</p>
-      </div> : <div className='w-[90%] h-full flex justify-center items-center'>
+      </div> : <div className='w-[90%] h-auto flex justify-center items-center'>
         <p className='w-1/3 h-auto flex items-center  justify-center text-[15px] text-white'>STOCK</p>
         <p className='w-1/3 h-auto flex items-center  justify-center text-[15px] text-white'>PRICE</p>
         <p className='w-1/3 h-auto flex items-center  justify-center text-[15px] text-white'>TYPE</p>
       </div>}
-      <div className='w-[90%] min-h-[300px] max-h-[auto] pb-30 '>
+      <div className='w-[90%] h-[150px] max-h-[130px] pb-30 overflow-y-scroll '>
         <Outlet />
       </div>
     </div>

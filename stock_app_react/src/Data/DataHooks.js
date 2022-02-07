@@ -22,6 +22,7 @@ export default function DataHooks({ children }) {
     ADMINSHOWTRADER: {},
     MARKETS: [],
     MARKETINFO: {},
+    TOPMARKETS: [],
   })
   const [loginEmailState, setLoginEmailState] = useState(false)
   const [loginPasswordState, setLoginPasswordState] = useState(false)

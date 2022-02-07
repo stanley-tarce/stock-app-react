@@ -23,7 +23,8 @@ function MainDashboard() {
   useEffect(() => {
     fetchData.then(response => {
       const [markets, stocks, transactionHistories] = response
-      setTotalData({ ...totalData, MARKETS: [...markets.data], TRADERSTOCKS: [...stocks.data], TRADERTRANSACTIONS: [...transactionHistories.data] })
+      let topMarkets = [...markets.data.filter(market => market.percentage_change.includes('+')).sort((a, b) => parseInt(b.percentage_change.split('+')[1]) - parseInt(a.percentage_change.split('+')[1]))]
+      setTotalData({ ...totalData, MARKETS: [...markets.data], TRADERSTOCKS: [...stocks.data], TRADERTRANSACTIONS: [...transactionHistories.data], TOPMARKETS: [...topMarkets] })
       updateHeader(markets, headers, setHeaders)
       updateHeader(stocks, headers, setHeaders)
       updateHeader(transactionHistories, headers, setHeaders)

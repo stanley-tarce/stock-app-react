@@ -23,7 +23,10 @@ function TraderSingleStockView() {
             apiCall('stocks#create', obj).then(response => {
                 toast.success('Stock Bought')
                 updateHeader(response, headers, setHeaders)
-            }).then(r => navigate('/main')).catch(err => {
+            }).then(r => {
+                let obj = { headers: headers, trader_id: totalData.TRADERINFO.id }
+                apiCall('traders#show', obj).then(response => { setTotalData({ ...totalData, TRADERINFO: response.data }) }).then(r => navigate('/main'))
+            }).catch(err => {
                 updateHeader(err.response, headers, setHeaders)
                 if (err.response.data.errors) {
                     toast.error(err.response.data.errors)
@@ -39,7 +42,10 @@ function TraderSingleStockView() {
             apiCall('stocks#buy_update', obj).then(response => {
                 updateHeader(response, headers, setHeaders)
                 toast.success('Stock Bought')
-            }).then(r => navigate('/main')).catch(err => {
+            }).then(r => {
+                let obj = { headers: headers, trader_id: totalData.TRADERINFO.id }
+                apiCall('traders#show', obj).then(response => { setTotalData({ ...totalData, TRADERINFO: response.data }) }).then(r => navigate('/main'))
+            }).catch(err => {
                 updateHeader(err.response, headers, setHeaders)
                 if (err.response.data.errors) {
                     toast.error(err.response.data.errors)
@@ -62,7 +68,10 @@ function TraderSingleStockView() {
             toast.success('Stock Sold')
             updateHeader(response, headers, setHeaders)
 
-        }).then(r => navigate('/main')).catch(err => {
+        }).then(r => {
+            let obj = { headers: headers, trader_id: totalData.TRADERINFO.id }
+            apiCall('traders#show', obj).then(response => { setTotalData({ ...totalData, TRADERINFO: response.data }) }).then(r => navigate('/main'))
+        }).catch(err => {
             if (err.response.data.errors) {
                 toast.error(err.response.data.errors)
             }

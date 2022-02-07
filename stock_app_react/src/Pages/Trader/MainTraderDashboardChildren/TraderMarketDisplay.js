@@ -19,7 +19,7 @@ function TraderMarketDisplay() {
   }
   return (
     <section className='w-full h-full flex flex-col items-center text-white'>
-      <p className='w-[90%] h-auto text-2xl  mt-10 border-white mb-[35px]'>Markets</p>
+      <h2 className='w-[90%] h-auto text-xl md:text-2xl  mt-5 border-white mb-[15px]'>Markets</h2>
       <div className='w-[90%] h-[83%] flex flex-col gap-4'>
         <div className='w-full h-[60px] bg-container-light-blue rounded-[20px] flex justify-start items-center gap-2 p-2'>
           <SearchIcon />

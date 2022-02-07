@@ -75,6 +75,7 @@ function TraderUserDisplay() {
           ADMINSHOWTRADER: {},
           MARKETS: [],
           MARKETINFO: {},
+          TOPMARKETS: []
         })
         setHeaders({ 'access-token': '', 'client': '', 'uid': '', 'expiry': '' })
         navigate('/')
@@ -83,10 +84,10 @@ function TraderUserDisplay() {
   }
 
   return (
-    <div className='w-full h-auto mt-10 flex flex-col justify-center items-center gap-2'>
+    <div className='w-full h-auto mt-3 flex flex-col justify-center items-center'>
       {/* Profile header */}
       <div className='w-[90%] h-full border-b-[1px] border-button-color-blue-light p-2 flex justify-between items-center' >
-        <p className='text-white text-xl md:text-2xl font-primary '>Profile</p>
+        <h2 className='text-white text-xl md:text-2xl font-primary'>Profile</h2>
         <button onClick={(e) => signOut(e)}><SignOutIcon /></button>
       </div>
 
@@ -100,7 +101,7 @@ function TraderUserDisplay() {
         )}
         <div className='w-full h-auto grid grid-cols-6 text-white md:text-2xl text-base'>
           <label className='w-full flex justify-center ml-1 items-center h-auto font-primary col-start-1 col-end-2'>Status:</label>
-          <p className='w-full bg-rose-500 'ref={statRef} >{TRADERINFO.status}</p>
+          <p className='w-full bg-rose-500 ' ref={statRef} >{TRADERINFO.status}</p>
         </div>
       </div>
     </div>
