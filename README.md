@@ -4,7 +4,7 @@
 
 # Stock React App
 Stock React App  is the frontend website for the Stock App. 
-**To access the backend repository, please click this [link](https://github.com/stanley-tarce/avion-banking-api)**
+**To access the backend repository, please click this [link](https://github.com/stanley-tarce/stock-app)**
 
 Stock App is both an admin-based and a trader-based application that lets users manage, buy, and sell stocks. The application uses IEX-Ruby-Client API. 
  
