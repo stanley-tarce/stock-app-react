@@ -2,12 +2,11 @@
 
 
 
-
 # Stock React App
-
-Stock React App  is the frontend website for the Stock App.
+Stock React App  is the frontend website for the Stock App. 
 **To access the backend repository, please click this [link](https://github.com/stanley-tarce/avion-banking-api)**
 
+Stock App is both an admin-based and a trader-based application that lets users manage, buy, and sell stocks. The application uses IEX-Ruby-Client API. 
  
 ### Live/Demo
 Please use this [link](https://stock-app-react.vercel.app) to access the app
@@ -17,7 +16,7 @@ To access the app in admin's point of view, use this
 
     username: stanleytarce18@gmail.com
     password: 1234567
-Alternatively, use can sign up as a trader by clicking the Sign Up button in the Login page.
+Alternatively, user can sign up as a trader by clicking the Sign Up button in the Login page.
 ###  Objectives
 **ADMIN:**
  1. As an Admin, I want to create a new user to manually add them to the app.
@@ -47,6 +46,12 @@ To create the frontend app, we used the following frameworks:
 
 ### Snapshots 
 
+![image](https://user-images.githubusercontent.com/30910148/152924085-adbb8127-7724-418d-9c92-5a2a5d69be41.png)
+![image](https://user-images.githubusercontent.com/30910148/152924300-82a77f07-27a1-4937-9bf2-a7c2d96088c7.png)
+![image](https://user-images.githubusercontent.com/30910148/152933186-71e3b37d-f69a-4080-b246-08fbb361b669.png)
+![image](https://user-images.githubusercontent.com/30910148/152933498-37b6e92c-ce20-4b20-85ae-5eb9e2501820.png)
+
+
 
 
 ### Installation 
@@ -74,4 +79,4 @@ To deploy the app to production you can choose any of these methods I use
  3. [Heroku](https://blog.heroku.com/deploying-react-with-zero-configuration)
 
 ### Credits
-I would like to thank to my groupmates for working with the project and to my teachers in Avion School for making this possible.
+I would like to thank my groupmates for working with the project and to my teachers in Avion School for making this possible.
