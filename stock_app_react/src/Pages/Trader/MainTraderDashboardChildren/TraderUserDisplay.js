@@ -75,7 +75,8 @@ function TraderUserDisplay() {
           ADMINSHOWTRADER: {},
           MARKETS: [],
           MARKETINFO: {},
-          TOPMARKETS: []
+          TOPMARKETS: [],
+
         })
         setHeaders({ ...headers, 'access-token': '', 'client': '', 'uid': '', 'expiry': '' })
       }
