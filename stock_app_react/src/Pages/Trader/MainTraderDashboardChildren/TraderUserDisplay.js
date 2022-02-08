@@ -77,10 +77,9 @@ function TraderUserDisplay() {
           MARKETINFO: {},
           TOPMARKETS: []
         })
-        setHeaders({ 'access-token': '', 'client': '', 'uid': '', 'expiry': '' })
-        navigate('/')
+        setHeaders({ ...headers, 'access-token': '', 'client': '', 'uid': '', 'expiry': '' })
       }
-      )
+      ).then(navigate('/'))
   }
 
   return (
