@@ -4,8 +4,6 @@ import { CreateContext } from '../../../../Data/DataHooks'
 function TraderTransactions() {
     const { totalData } = useContext(CreateContext)
     const { TRADERTRANSACTIONS } = totalData
-    console.log(TRADERTRANSACTIONS)
-    console.log('THATS IT')
     return (
         <div className='w-auto h-auto flex flex-col justify-start items-center  '>
             <div className='w-full h-auto flex flex-col justify-start items-center gap-3'>
