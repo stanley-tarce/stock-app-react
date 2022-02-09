@@ -49,13 +49,15 @@ function AdminHomeDisplay() {
           ADMINLISTS: [],
           ADMINSHOWTRADER: {},
           MARKETS: [],
+          TOPMARKETS: [],
           MARKETINFO: {},
+
         })
         setUserData({})
-        setHeaders({ 'access-token': '', 'client': '', 'uid': '', 'expiry': '' })
-        navigate('/')
+        setHeaders({ ...headers, 'access-token': '', 'client': '', 'uid': '', 'expiry': '' })
+
       }
-      )
+      ).then(navigate('/'))
   }
   return (
     <div className='w-full h-full flex flex-col items-center'>
