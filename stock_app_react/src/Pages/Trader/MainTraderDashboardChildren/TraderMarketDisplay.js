@@ -20,7 +20,7 @@ function TraderMarketDisplay() {
  
   return (
     <section className='w-full h-full flex flex-col items-center text-white'>
-      <h2 className='w-[90%] h-auto text-xl md:text-2xl mt-5 border-white mb-[15px]'>Markets</h2>
+      <h2 className='w-[90%] h-auto text-xl md:text-2xl mt-5 font-primary'>Markets</h2>
       <div className='w-[90%] h-[83%] flex flex-col gap-4'>
         <div className='w-full h-[50px] border-2 border-container-light-blue rounded-lg flex justify-start items-center gap-2 md:py-6 p-2'>
           <SearchIcon className={"w-[30px] h-[30px] text-text-gray"} />
@@ -29,7 +29,7 @@ function TraderMarketDisplay() {
         <div className='table-head w-full h-auto grid grid-cols-4'>
           <p className='w-full h-full flex col-start-1 col-end-3 justify-start text-xs md:text-base ml-4 md:ml-8 uppercase text-white'>stock</p>
           <p className='w-full h-full flex col-start-3 col-end-4 justify-start text-xs md:text-base uppercase text-white'>price</p>
-          <p className='w-full h-full flex col-start-4 col-end-5 justify-start text-xs md:text-base uppercase text-white'>chg%</p>
+          <p className='w-full h-full flex col-start-4 col-end-5 justify-start text-xs md:text-base ml-4 uppercase text-white'>chg%</p>
         </div>
         <div className='w-full h-full overflow-scroll flex flex-col gap-4 '>
           {markets.length !== 0 ? markets.filter(data => data.symbol.includes(search)).map((market, index) => {
